@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2 : Calcul et affichage conditionnel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #0056b3;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #0056b3;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 2 : Calcul et affichage conditionnel</h1>
+        <p><span class="highlight">Objectif</span> : Approfondir les conditions (if, else if, else) et les opérateurs mathématiques.</p>
+        
+        <h2>Énoncé</h2>
+        <ol>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Demande à l'utilisateur :</li>
+                    <ul>
+                        <li>Deux nombres décimaux (ex. 12.5 et 8.3).</li>
+                    </ul>
+                    <li>Propose les options suivantes :</li>
+                    <ul>
+                        <li>Addition</li>
+                        <li>Soustraction</li>
+                        <li>Multiplication</li>
+                        <li>Division</li>
+                    </ul>
+                    <li>En fonction du choix de l'utilisateur, effectue l'opération correspondante et affiche le résultat.</li>
+                    <li>Gère les cas où l'utilisateur :</li>
+                    <ul>
+                        <li>Tente de diviser par zéro (affiche un message d'erreur).</li>
+                        <li>Entre une option invalide (affiche un message d'erreur).</li>
+                    </ul>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Exemple attendu</h2>
+        <pre>
+Entrez le premier nombre : 12.5
+Entrez le deuxième nombre : 8.3
+Choisissez une opération (1=Addition, 2=Soustraction, 3=Multiplication, 4=Division) : 1
+Résultat : 20.8
+        </pre>
+
+        <h2>Conseils techniques</h2>
+        <ul>
+            <li>Utilise un switch pour simplifier les choix d'opération.</li>
+            <li>Garde en tête qu'une division par zéro génère une erreur qu'il faut gérer avec une condition.</li>        
+            <li>Exemple d’utilisation de switch :
+                <pre>
+switch (choix) {
+    case 1:
+        // Addition
+        break;
+    case 2:
+        // Soustraction
+        break;
+    default:
+        // Message d'erreur
+}
+                </pre>
+            </li>
+        </ul>
+    </div>
+    Envoie-moi ton code une fois terminé, et on le corrigera ensemble ! 🚀
+</body>
+</html>

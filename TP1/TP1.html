@@ -1,0 +1,55 @@
+<header>
+
+</header>
+<body>
+<h1>Exercice TP1: Collecte et affichage des informations utilisateur</h1>
+Objectif : Manipuler les variables et interagir avec l'utilisateur en Java.
+<ul>
+    <li>Écris un programme qui :</li>
+    <ul>
+        <li>Demande à l'utilisateur :</li>
+            <ul>
+                <li>Son nom (chaîne de caractères).</li>
+                <li>Son âge (entier).</li>
+                <li>Son salaire (nombre décimal).</li>
+            </ul>
+            <li>Affiche ces informations dans une phrase formatée.<br/>
+                Bonjour [Nom], vous avez [Âge] ans et vous gagnez [Salaire] €.
+            </li>
+    </ul>
+    <li>Les étapes dans le programme :</li>
+    <ul>
+        <li>Créer un scanner pour lire les entrées utilisateur.</li>
+        <li>Stocker les informations dans des variables appropriées.</li>
+        <li>Afficher une phrase dans ce format :</li>
+    </ul>
+    <li>Exemple d'exécution attendu :<br>
+        Entrez votre nom : Alice<br>
+        Entrez votre âge : 30<br>
+        Entrez votre salaire : 3500.50<br>
+        Bonjour Alice, vous avez 30 ans et vous gagnez 3500.50 €.<br>
+    </li>
+
+</ul>
+
+
+
+<h1>Conseils techniques</h1>
+<ul>
+    <li>
+        Utilise Scanner pour lire les entrées utilisateur :<br>
+        Scanner scanner = new Scanner(System.in);
+    </li>
+    <li>
+        Ferme toujours ton scanner après utilisation :<br>
+        scanner.close();
+    </li>
+    <li>
+        Pour formater les nombres décimaux, tu peux utiliser System.out.printf :<br>
+        System.out.printf("Bonjour %s, vous avez %d ans et vous gagnez %.2f €.\n", nom, age, salaire);
+    </li>
+</ul>
+
+Quand tu as terminé, envoie-moi ton code. Je le corrige et on passe à la suite ! 🚀
+
+</body>

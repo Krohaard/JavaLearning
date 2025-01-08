@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3 - Statistiques sur un tableau</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #0056b3;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #0056b3;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 3 : Statistiques sur un tableau</h1>
+        <p><span class="highlight">Objectif</span> : Manipuler les tableaux et les boucles en Java.</p>
+        
+        <h2>Énoncé</h2>
+        <ol>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Demande à l'utilisateur combien de nombres il souhaite saisir.</li>
+                    <li>Lit ces nombres et les stocke dans un tableau.</li>
+                    <li>Calcule et affiche :
+                        <ul>
+                            <li>La <span class="highlight">somme</span> des nombres.</li>
+                            <li>La <span class="highlight">moyenne</span> des nombres.</li>
+                            <li>Le <span class="highlight">plus grand</span> nombre.</li>
+                            <li>Le <span class="highlight">plus petit</span> nombre.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Contraintes :
+                <ul>
+                    <li>Gérer les cas où l'utilisateur entre un tableau vide (affiche un message et termine le programme).</li>
+                    <li>Utiliser des boucles pour parcourir le tableau.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Exemple attendu</h2>
+        <pre>
+Combien de nombres souhaitez-vous saisir ? 5
+Entrez le nombre 1 : 10
+Entrez le nombre 2 : 25
+Entrez le nombre 3 : 7
+Entrez le nombre 4 : 42
+Entrez le nombre 5 : 3
+
+Somme : 87
+Moyenne : 17.4
+Plus grand nombre : 42
+Plus petit nombre : 3
+        </pre>
+
+        <h2>Conseils techniques</h2>
+        <ul>
+            <li>Crée un tableau avec une taille dynamique :
+                <pre>int[] tableau = new int[taille];</pre>
+            </li>
+            <li>Utilise une boucle <span class="highlight">for</span> pour remplir le tableau et pour effectuer les calculs.</li>
+            <li>Exemple pour calculer la somme :
+                <pre>
+int somme = 0;
+for (int i = 0; i < tableau.length; i++) {
+    somme += tableau[i];
+}
+                </pre>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
