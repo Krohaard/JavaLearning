@@ -1,6 +1,8 @@
 /**
  * 
  */
+package tp2;
+
 import java.util.Scanner;
 /**
  * 
