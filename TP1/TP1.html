@@ -1,55 +1,91 @@
-<header>
-
-</header>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice TP1: Collecte et affichage des informations utilisateur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #0056b3;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #0056b3;
+            font-weight: bold;
+        }
+    </style>
+</head>
 <body>
-<h1>Exercice TP1: Collecte et affichage des informations utilisateur</h1>
-Objectif : Manipuler les variables et interagir avec l'utilisateur en Java.
-<ul>
-    <li>Écris un programme qui :</li>
-    <ul>
-        <li>Demande à l'utilisateur :</li>
-            <ul>
-                <li>Son nom (chaîne de caractères).</li>
-                <li>Son âge (entier).</li>
-                <li>Son salaire (nombre décimal).</li>
-            </ul>
-            <li>Affiche ces informations dans une phrase formatée.<br/>
-                Bonjour [Nom], vous avez [Âge] ans et vous gagnez [Salaire] €.
+    <div class="container">
+        <h1>Exercice TP1: Collecte et affichage des informations utilisateur</h1>
+        <p><span class="highlight">Objectif</span> : Manipuler les variables et interagir avec l'utilisateur en Java.</p>
+        
+        <h2>Énoncé</h2>
+        <ol>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Demande à l'utilisateur :</li>
+                    <ul>
+                        <li>Son nom (chaîne de caractères).</li>
+                        <li>Son âge (entier).</li>
+                        <li>Son salaire (nombre décimal).</li>
+                    </ul>
+                    <li>Affiche ces informations dans une phrase formatée.
+                        <pre>Bonjour [Nom], vous avez [Âge] ans et vous gagnez [Salaire] €.</pre>
+                    </li>
+                </ul>
             </li>
-    </ul>
-    <li>Les étapes dans le programme :</li>
-    <ul>
-        <li>Créer un scanner pour lire les entrées utilisateur.</li>
-        <li>Stocker les informations dans des variables appropriées.</li>
-        <li>Afficher une phrase dans ce format :</li>
-    </ul>
-    <li>Exemple d'exécution attendu :<br>
-        Entrez votre nom : Alice<br>
-        Entrez votre âge : 30<br>
-        Entrez votre salaire : 3500.50<br>
-        Bonjour Alice, vous avez 30 ans et vous gagnez 3500.50 €.<br>
-    </li>
+            <li>Les étapes dans le programme :
+                <ul>
+                    <li>Créer un scanner pour lire les entrées utilisateur.</li>
+                    <li>Stocker les informations dans des variables appropriées.</li>
+                    <li>Afficher une phrase dans ce format :</li>
+                </ul>
+            </li>
+        </ol>
 
-</ul>
+        <h2>Exemple attendu</h2>
+        <pre>
+Entrez votre nom : Alice
+Entrez votre âge : 30
+Entrez votre salaire : 3500.50
+Bonjour Alice, vous avez 30 ans et vous gagnez 3500.50 €.
+        </pre>
 
-
-
-<h1>Conseils techniques</h1>
-<ul>
-    <li>
-        Utilise Scanner pour lire les entrées utilisateur :<br>
-        Scanner scanner = new Scanner(System.in);
-    </li>
-    <li>
-        Ferme toujours ton scanner après utilisation :<br>
-        scanner.close();
-    </li>
-    <li>
-        Pour formater les nombres décimaux, tu peux utiliser System.out.printf :<br>
-        System.out.printf("Bonjour %s, vous avez %d ans et vous gagnez %.2f €.\n", nom, age, salaire);
-    </li>
-</ul>
-
-Quand tu as terminé, envoie-moi ton code. Je le corrige et on passe à la suite ! 🚀
-
+        <h2>Conseils techniques</h2>
+        <ul>
+            <li>Utilise <span class="highlight">Scanner</span> pour lire les entrées utilisateur :
+                <pre>Scanner scanner = new Scanner(System.in);</pre>
+            </li>
+            <li>Ferme toujours ton scanner après utilisation :
+                <pre>scanner.close();</pre>
+            </li>
+            <li>Pour formater les nombres décimaux, tu peux utiliser <span class="highlight">System.out.printf</span> :
+                <pre>System.out.printf("Bonjour %s, vous avez %d ans et vous gagnez %.2f €.\n", nom, age, salaire);</pre>
+            </li>
+        </ul>
+        Quand tu as terminé, envoie-moi ton code. Je le corrige et on passe à la suite ! 🚀
+    </div>
 </body>
+</html>
