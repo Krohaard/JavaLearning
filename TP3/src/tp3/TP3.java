@@ -17,7 +17,7 @@ public class TP3 {
 		// TODO Auto-generated method stub
 		int kk;
 		int kTotalNumber;
-		kTotalNumber=kQuestion("Combien de nombres souhaitez-vous saisir ?");
+		kTotalNumber=(int) kQuestion("Combien de nombres souhaitez-vous saisir ?");
 		for(kk=0;kk<kTotalNumber;kk++) {
 			
 		}
