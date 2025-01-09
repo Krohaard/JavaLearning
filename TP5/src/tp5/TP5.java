@@ -11,24 +11,25 @@ public class TP5 {
 		Scanner kRead = new Scanner(System.in);
 		System.out.printf("Entrez un nombre positif :");
 		kk = kRead.nextInt();
-		if(kCheckPerfectNumber(kk) && kk > 0) {
-			System.out.printf("%d est un nombre parfait\n",kk);
-			System.out.println("Diviseurs propres :" + kSearchDivider(kk));
+		if(kk <= 0) {
+			System.out.println("Erreur de saisie\n");
 		}else {
-			if(!kCheckPerfectNumber(kk)) {
-				System.out.printf("%d n'est pas un nombre parfait\n",kk);
+			if(kCheckPerfectNumber(kk)) {
+				System.out.printf("%d est un nombre parfait\n",kk);
+				System.out.println("Diviseurs propres :" + kSearchDivider(kk));
 			}else {
-				System.out.println("Erreur de saisie\n");
+				System.out.printf("%d n'est pas un nombre parfait\n",kk);
 			}
 		}
+		kRead.close();
 	}
-	public static ArrayList<Integer> kSearchDivider(float kValue) {
+	public static ArrayList<Integer> kSearchDivider(int kValue) {
 		int kMaxDivider;
 		int kk;
 		ArrayList<Integer> kResultTemp = new ArrayList<>();
-		kMaxDivider = (int) (kValue / 2);
+		kMaxDivider = kValue / 2;
 		for(kk=1;kk<=kMaxDivider;kk++) {
-			if(((kValue/kk) - ((int) (kValue/kk)))==0) {
+			if( kValue % kk == 0) {
 				kResultTemp.add(kk);
 			}
 		}
@@ -42,7 +43,6 @@ public class TP5 {
 		return kSum;
 	}
 	public static boolean kCheckPerfectNumber(int kValue) {
-		if(kSumArray(kSearchDivider(kValue))==kValue) return true;
-		return false;
+		return kSumArray(kSearchDivider(kValue)) == kValue;
 	}
 }
