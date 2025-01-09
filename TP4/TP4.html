@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 4 - Manipulation de chaînes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #5a5af1;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #5a5af1;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #5a5af1;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 4 : Manipulation de chaînes de caractères</h1>
+        <p><span class="highlight">Objectif</span> : Travailler sur les opérations courantes sur les chaînes de caractères en Java.</p>
+        
+        <h2>Énoncé</h2>
+        <ol>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Demande une phrase à l'utilisateur.</li>
+                    <li>Affiche :
+                        <ul>
+                            <li>La phrase en <span class="highlight">majuscules</span>.</li>
+                            <li>La phrase en <span class="highlight">minuscules</span>.</li>
+                            <li>Le <span class="highlight">nombre de caractères</span> dans la phrase.</li>
+                            <li>Le <span class="highlight">nombre de mots</span> dans la phrase.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Exemple attendu</h2>
+        <pre>
+Entrez une phrase : Bonjour tout le monde !
+Majuscules : BONJOUR TOUT LE MONDE !
+Minuscules : bonjour tout le monde !
+Nombre de caractères : 21
+Nombre de mots : 4
+        </pre>
+
+        <h2>Conseils techniques</h2>
+        <ul>
+            <li>Utilise <span class="highlight">`String.toUpperCase()`</span> et <span class="highlight">`String.toLowerCase()`</span> pour changer la casse.</li>
+            <li>Le nombre de caractères inclut les espaces : utilise <span class="highlight">`String.length()`</span>.</li>
+            <li>Pour compter les mots, divise la phrase avec <span class="highlight">`String.split(" ")`</span> et utilise la taille du tableau résultant.</li>
+        </ul>
+    </div>
+</body>
+</html>
