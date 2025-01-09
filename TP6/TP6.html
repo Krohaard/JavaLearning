@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 6 - Générateur de tableau aléatoire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #ff5722;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ff5722;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #ff5722;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 6 : Générateur de tableau aléatoire</h1>
+        <p><span class="highlight">Objectif</span> : Travailler avec les tableaux, les nombres aléatoires, et les boucles en Java.</p>
+        
+        <h2>Énoncé</h2>
+        <ol>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Génère un tableau d'entiers aléatoires.</li>
+                    <li>Demande à l'utilisateur la taille du tableau (par exemple : 10). La taille doit être un entier positif.</li>
+                    <li>Demande à l'utilisateur les bornes inférieure et supérieure des nombres aléatoires (par exemple : 1 et 100).</li>
+                    <li>Affiche le tableau généré.</li>
+                    <li>Affiche :
+                        <ul>
+                            <li>La somme des nombres du tableau.</li>
+                            <li>La moyenne des nombres du tableau.</li>
+                            <li>Le plus grand et le plus petit nombre.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Exemple attendu</h2>
+        <pre>
+Taille du tableau : 5
+Borne inférieure : 1
+Borne supérieure : 10
+Tableau généré : [3, 7, 1, 9, 5]
+Somme : 25
+Moyenne : 5.0
+Plus grand : 9
+Plus petit : 1
+        </pre>
+
+        <h2>Conseils techniques</h2>
+        <ul>
+            <li>Utilise la classe <span class="highlight">`Random`</span> pour générer des nombres aléatoires.</li>
+            <li>Pour générer un nombre dans une plage donnée (min à max), utilise :
+                <pre>
+int nombre = min + random.nextInt(max - min + 1);
+                </pre>
+            </li>
+            <li>Utilise une boucle pour parcourir le tableau et effectuer les calculs (somme, moyenne, etc.).</li>
+            <li>Gère les entrées invalides (taille négative ou bornes incorrectes).</li>
+        </ul>
+
+        <h2>Temps estimé pour un développeur expert</h2>
+        <p>Environ 15 à 20 minutes.</p>
+    </div>
+</body>
+</html>
