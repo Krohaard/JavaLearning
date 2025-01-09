@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5 - Nombres parfaits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #4caf50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 5 : Les nombres parfaits</h1>
+        <p><span class="highlight">Objectif</span> : Travailler sur les boucles et les fonctions en Java.</p>
+        
+        <h2>Énoncé</h2>
+        <ol>
+            <li>Un nombre parfait est un entier positif égal à la somme de ses diviseurs propres (diviseurs positifs autres que lui-même).</li>
+            <li>Par exemple :
+                <ul>
+                    <li>6 est un nombre parfait car ses diviseurs propres sont 1, 2, et 3, et 1 + 2 + 3 = 6.</li>
+                    <li>28 est un nombre parfait car ses diviseurs propres sont 1, 2, 4, 7, et 14, et 1 + 2 + 4 + 7 + 14 = 28.</li>
+                </ul>
+            </li>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Demande un entier positif à l'utilisateur.</li>
+                    <li>Vérifie si cet entier est un nombre parfait.</li>
+                    <li>Affiche tous les diviseurs propres de ce nombre.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Exemple attendu</h2>
+        <pre>
+Entrez un nombre entier positif : 28
+28 est un nombre parfait.
+Diviseurs propres : 1, 2, 4, 7, 14
+        </pre>
+
+        <h2>Conseils techniques</h2>
+        <ul>
+            <li>Utilise une boucle pour trouver tous les diviseurs propres d'un nombre.</li>
+            <li>Utilise une fonction pour vérifier si un nombre est parfait et pour calculer ses diviseurs propres.</li>
+            <li>Gère les cas où l'utilisateur entre un nombre négatif ou zéro.</li>
+        </ul>
+    </div>
+</body>
+</html>
