@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 7 - Gestion des fichiers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 7 : Gestion des fichiers</h1>
+        
+        <h2>1. Cours explicatif</h2>
+        <p><span class="highlight">Objectif</span> : Comprendre les bases de la gestion des fichiers en Java.</p>
+        <p>Java propose plusieurs classes pour travailler avec des fichiers. Voici les principales :</p>
+        
+        <ul>
+            <li><span class="highlight">File</span> : Représente un fichier ou un répertoire, permet de vérifier son existence, sa taille, etc.</li>
+            <li><span class="highlight">FileWriter</span> : Utilisé pour écrire du texte dans un fichier.</li>
+            <li><span class="highlight">FileReader</span> : Utilisé pour lire du texte depuis un fichier.</li>
+            <li><span class="highlight">BufferedReader</span> et <span class="highlight">BufferedWriter</span> : Fournissent une lecture et une écriture plus efficaces grâce au buffering.</li>
+        </ul>
+        
+        <h3>Exemple simple d'écriture dans un fichier</h3>
+        <pre>
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Exemple {
+    public static void main(String[] args) {
+        try (FileWriter writer = new FileWriter("exemple.txt")) {
+            writer.write("Bonjour, fichier !");
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h3>Exemple simple de lecture depuis un fichier</h3>
+        <pre>
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
+public class Exemple {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("exemple.txt"))) {
+            String ligne;
+            while ((ligne = reader.readLine()) != null) {
+                System.out.println(ligne);
+            }
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/essential/io/" target="_blank">documentation officielle</a>.</p>
+        
+        <h2>2. Énoncé</h2>
+        <ol>
+            <li>Écris un programme qui :
+                <ul>
+                    <li>Crée un fichier texte nommé <span class="highlight">"resultat.txt"</span>.</li>
+                    <li>Écrit les 10 premières lignes de la table de multiplication choisie par l'utilisateur dans ce fichier.</li>
+                    <li>Lit le contenu du fichier et l'affiche dans la console.</li>
+                </ul>
+            </li>
+            <li>Gère les erreurs éventuelles (fichier inaccessible, saisie invalide, etc.).</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+Entrez un nombre pour la table de multiplication : 5
+Fichier "resultat.txt" créé et rempli.
+
+Contenu du fichier :
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50
+        </pre>
+
+        <h2>4. Temps estimé pour un développeur expert</h2>
+        <p>Environ 20 à 25 minutes.</p>
+    </div>
+</body>
+</html>
