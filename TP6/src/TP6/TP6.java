@@ -26,15 +26,15 @@ public class TP6 {
 			kLbound = kRead.nextInt();
 			System.out.printf("Borne supérieur : ");
 			kUbound = kRead.nextInt();
-			if(kUbound>kLbound && kUbound>0 && kLbound>0) {
+			if(kUbound>kLbound) {
 				for(kk=0;kk<kSizeArray;kk++) {
 					kRandomList[kk]=kLbound + kRandom.nextInt(kUbound - kLbound + 1);
 				}
 				System.out.println("Tableau généré : " + kFormatArray(kRandomList));
 				System.out.println("Somme : " + kSumArray(kRandomList));
 				System.out.println("Moxenne : " + kMeanArray(kRandomList));
-				System.out.println("Plus petit : " + kMinArray(kRandomList));
-				System.out.println("Plus grand : " + kMaxArray(kRandomList));
+				System.out.println("Plus petit : " + kMinMaxArray(kRandomList)[0]);
+				System.out.println("Plus grand : " + kMinMaxArray(kRandomList)[1]);
 			}else {
 				System.out.println("Erreur dans les bornes du tableau");
 			}
@@ -49,7 +49,7 @@ public class TP6 {
 //		kOut = new String();
 		kOut="[ "+kData[0];
 		for(kk=1;kk<kData.length;kk++) {
-			kOut+=" "+kData[kk];
+			kOut+=", "+kData[kk];
 		}
 		kOut+=" ]";
 		return kOut;
@@ -65,20 +65,13 @@ public class TP6 {
 	public static float kMeanArray(int[] kData) {
 		return (float) kSumArray(kData)/kData.length;
 	}
-	public static int kMinArray(int[] kData) {
-		int kk=0;
-		int kMin=kData[0];
-		for(kk=0;kk<kData.length;kk++) {
-			if(kData[kk]<kMin) kMin=kData[kk];
-		}
-		return kMin;
-	}
-	public static int kMaxArray(int[] kData) {
-		int kk=0;
-		int kMax=kData[0];
-		for(kk=0;kk<kData.length;kk++) {
-			if(kData[kk]>kMax) kMax=kData[kk];
-		}
-		return kMax;
+	public static int[] kMinMaxArray(int[] kData) {
+	    int kMin = kData[0];
+	    int kMax = kData[0];
+	    for (int kk = 1; kk < kData.length; kk++) {
+	        if (kData[kk] < kMin) kMin = kData[kk];
+	        if (kData[kk] > kMax) kMax = kData[kk];
+	    }
+	    return new int[] {kMin, kMax};
 	}
 }
