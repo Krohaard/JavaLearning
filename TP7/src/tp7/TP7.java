@@ -18,35 +18,40 @@ public class TP7 {
 		Scanner kRead;
 		File kFile;
 		String kNameFile;
+		boolean kErrorKey;
 
+		kQuestion = "Y"; //Default value
+		kErrorKey = false; // Default value
 		kRead = new Scanner(System.in);
 		System.out.printf("Entrez un nombre pour la table de multiplication :");
 		kArraySelected = kRead.nextInt();
-		kQuestion = kRead.nextLine();
+		kRead.nextLine(); //consumption of the enter key with the last input
+
 		kArrayData = kArrayCreation(kArraySelected);
 		kNameFile="Table" + kArraySelected + ".txt";
+
 		kFile = new File(kNameFile);
 		if(kFile.exists()) {
-			System.out.printf("Voulez-vous écraser le fichier? [Y]/n");
-			kQuestion = kRead.nextLine();
-			if(kQuestion == "") {
-				kQuestion= "Y";
-			}else {
-				kQuestion = "n";
-			}
+			do {
+				System.out.printf("Voulez-vous écraser le fichier? [Y]/n");
+				kQuestion = kRead.nextLine().trim();;
+				if(kQuestion.isEmpty()) {
+					kQuestion= "Y";
+				}
+				kErrorKey=!kQuestion.equalsIgnoreCase("Y") && !kQuestion.equalsIgnoreCase("n");
+				if(kErrorKey) System.out.println("Saisie invalide!");
+			}while(kErrorKey);
 		}
-		if(kQuestion == "" || kQuestion == "Y") {
+		if(kQuestion.equalsIgnoreCase("Y")) {
 			try {
 				kWriteDataFile(kArrayData,kNameFile);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
+				System.out.println("Fichier \"" + kNameFile + "\" créé et rempli.");
+				System.out.println("Contenu du fichier :");
+				System.out.println("--------------------");
 				kReadDataFile(kNameFile);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Erreur lors de la manipulation du fichier : " + e.getMessage());
 			}
 //			kDisplayResult(kArrayData);
 		}else {
