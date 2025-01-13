@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 8 - Calculatrice avec gestion des exceptions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 8 : Calculatrice simple avec gestion des exceptions</h1>
+        
+        <h2>1. Cours explicatif</h2>
+        <p><span class="highlight">Objectif</span> : Apprendre à gérer les erreurs utilisateur (comme une division par zéro) et à écrire un programme robuste grâce à la gestion des exceptions.</p>
+
+        <h3>Concepts abordés</h3>
+        <ul>
+            <li>Utilisation des blocs <span class="highlight">try-catch</span> pour intercepter les erreurs.</li>
+            <li>Gestion des exceptions spécifiques comme <span class="highlight">ArithmeticException</span> et <span class="highlight">InputMismatchException</span>.</li>
+            <li>Validation des entrées utilisateur.</li>
+        </ul>
+
+        <h3>Exemple de division avec gestion d'une exception</h3>
+        <pre>
+import java.util.Scanner;
+
+public class Exemple {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Entrez le premier nombre : ");
+            int a = scanner.nextInt();
+            System.out.print("Entrez le second nombre : ");
+            int b = scanner.nextInt();
+            int resultat = a / b; // Peut provoquer une ArithmeticException
+            System.out.println("Résultat : " + resultat);
+        } catch (ArithmeticException e) {
+            System.out.println("Erreur : Division par zéro.");
+        } catch (InputMismatchException e) {
+            System.out.println("Erreur : Entrée invalide.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
+        </pre>
+
+        <h2>2. Énoncé</h2>
+        <p>Écris une calculatrice simple en Java qui :</p>
+        <ol>
+            <li>Demande à l'utilisateur d'entrer deux nombres.</li>
+            <li>Demande une opération parmi :
+                <ul>
+                    <li><span class="highlight">1</span> : Addition</li>
+                    <li><span class="highlight">2</span> : Soustraction</li>
+                    <li><span class="highlight">3</span> : Multiplication</li>
+                    <li><span class="highlight">4</span> : Division</li>
+                </ul>
+            </li>
+            <li>Affiche le résultat de l'opération.</li>
+            <li>Gère les erreurs suivantes :
+                <ul>
+                    <li>Division par zéro.</li>
+                    <li>Entrées invalides (par exemple, si l'utilisateur entre une lettre au lieu d'un nombre).</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+Entrez le premier nombre : 10
+Entrez le second nombre : 0
+Choisissez une opération (1=Addition, 2=Soustraction, 3=Multiplication, 4=Division) : 4
+Erreur : Division par zéro.
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilise un bloc <span class="highlight">try-catch</span> pour gérer les erreurs comme la division par zéro.</li>
+            <li>Utilise <span class="highlight">scanner.nextInt()</span> pour lire les entrées et intercepte <span class="highlight">InputMismatchException</span> pour valider les données.</li>
+            <li>Ajoute un bloc <span class="highlight">finally</span> pour fermer le scanner.</li>
+        </ul>
+
+        <h2>5. Temps estimé pour un développeur expert</h2>
+        <p>Environ 20 à 25 minutes.</p>
+    </div>
+</body>
+</html>
