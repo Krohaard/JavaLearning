@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - Lecture et écriture de fichiers en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours : Lecture et écriture de fichiers en Java</h1>
+        
+        <h2>1. Concepts fondamentaux</h2>
+        <p>En Java, il existe plusieurs classes pour lire et écrire des fichiers. Voici les plus courantes :</p>
+        
+        <ul>
+            <li><span class="highlight">File</span> : Représente un fichier ou un répertoire. Elle permet de vérifier si le fichier existe, d’obtenir sa taille, etc.</li>
+            <li><span class="highlight">FileReader</span> et <span class="highlight">FileWriter</span> : Classes simples pour lire et écrire des fichiers texte.</li>
+            <li><span class="highlight">BufferedReader</span> et <span class="highlight">BufferedWriter</span> : Fournissent une lecture et une écriture plus efficaces grâce au buffering.</li>
+            <li><span class="highlight">Files</span> : Une classe utilitaire introduite avec Java 7, qui permet de travailler facilement avec les fichiers.</li>
+        </ul>
+        
+        <h2>2. Écriture dans un fichier</h2>
+        <p>Voici trois façons courantes d’écrire dans un fichier :</p>
+        
+        <h3>a. Avec <span class="highlight">FileWriter</span></h3>
+        <pre>
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ExempleFileWriter {
+    public static void main(String[] args) {
+        try (FileWriter writer = new FileWriter("exemple.txt")) {
+            writer.write("Bonjour, fichier !");
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h3>b. Avec <span class="highlight">BufferedWriter</span></h3>
+        <pre>
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ExempleBufferedWriter {
+    public static void main(String[] args) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("exemple.txt"))) {
+            writer.write("Ligne 1");
+            writer.newLine(); // Ajout d'un saut de ligne
+            writer.write("Ligne 2");
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h3>c. Avec <span class="highlight">Files.write()</span></h3>
+        <pre>
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.List;
+
+public class ExempleFilesWrite {
+    public static void main(String[] args) {
+        List&lt;String&gt; lignes = List.of("Ligne 1", "Ligne 2", "Ligne 3");
+        try {
+            Files.write(Path.of("exemple.txt"), lignes, StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+        
+        <h2>3. Lecture d’un fichier</h2>
+        <p>Voici trois façons courantes de lire un fichier :</p>
+        
+        <h3>a. Avec <span class="highlight">FileReader</span> et <span class="highlight">BufferedReader</span></h3>
+        <pre>
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExempleBufferedReader {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("exemple.txt"))) {
+            String ligne;
+            while ((ligne = reader.readLine()) != null) {
+                System.out.println(ligne);
+            }
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h3>b. Avec <span class="highlight">Files.readAllLines()</span></h3>
+        <pre>
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+
+public class ExempleFilesReadAllLines {
+    public static void main(String[] args) {
+        try {
+            List&lt;String&gt; lignes = Files.readAllLines(Path.of("exemple.txt"));
+            for (String ligne : lignes) {
+                System.out.println(ligne);
+            }
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h3>c. Avec <span class="highlight">Scanner</span></h3>
+        <pre>
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ExempleScanner {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(new File("exemple.txt"))) {
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h2>4. Conseils</h2>
+        <ul>
+            <li>Utilise toujours un bloc <span class="highlight">try-with-resources</span> pour fermer automatiquement les ressources.</li>
+            <li>Préférer les classes modernes comme <span class="highlight">Files</span> pour leur simplicité.</li>
+            <li>Gère les exceptions pour éviter les plantages inattendus.</li>
+        </ul>
+
+        <h2>5. Liens utiles</h2>
+        <p>Pour aller plus loin, consulte la <a href="https://docs.oracle.com/javase/tutorial/essential/io/" target="_blank">documentation officielle sur Java I/O</a>.</p>
+    </div>
+</body>
+</html>

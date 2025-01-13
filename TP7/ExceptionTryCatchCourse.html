@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - Exceptions et try-catch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours : Les exceptions et le try-catch en Java</h1>
+
+        <h2>1. Qu'est-ce qu'une exception ?</h2>
+        <p>En Java, une <span class="highlight">exception</span> est un événement qui interrompt le déroulement normal d’un programme. Cela se produit lorsqu’une erreur se produit lors de l’exécution, par exemple :</p>
+        <ul>
+            <li>Division par zéro.</li>
+            <li>Accès à un fichier inexistant.</li>
+            <li>Index hors limites dans un tableau.</li>
+        </ul>
+        <p>Lorsqu'une exception se produit, Java génère un objet d'exception. Cet objet contient des informations sur l'erreur, telles que son type et son emplacement.</p>
+
+        <h2>2. Les principales classes d'exceptions</h2>
+        <p>Voici quelques exceptions courantes en Java :</p>
+        <ul>
+            <li><span class="highlight">ArithmeticException</span> : Erreur arithmétique (exemple : division par zéro).</li>
+            <li><span class="highlight">NullPointerException</span> : Tentative d’utiliser un objet qui a la valeur <span class="highlight">null</span>.</li>
+            <li><span class="highlight">ArrayIndexOutOfBoundsException</span> : Tentative d’accéder à un index inexistant dans un tableau.</li>
+            <li><span class="highlight">IOException</span> : Erreur d’entrée/sortie (fichiers, flux, etc.).</li>
+        </ul>
+
+        <h2>3. Gestion des exceptions avec try-catch</h2>
+        <p>La gestion des exceptions en Java repose sur le bloc <span class="highlight">try-catch</span>. Voici comment cela fonctionne :</p>
+
+        <pre>
+try {
+    // Code susceptible de provoquer une exception
+} catch (TypeException e) {
+    // Code pour gérer l'exception
+}
+        </pre>
+
+        <p><span class="highlight">Exemple :</span> Division par zéro :</p>
+        <pre>
+public class Exemple {
+    public static void main(String[] args) {
+        try {
+            int resultat = 10 / 0; // Provoque une ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Erreur : Division par zéro.");
+        }
+    }
+}
+        </pre>
+
+        <h2>4. Le bloc finally</h2>
+        <p>Le bloc <span class="highlight">finally</span> est facultatif et s'exécute toujours, qu’une exception soit levée ou non. Il est souvent utilisé pour libérer des ressources (comme fermer un fichier ou une connexion).</p>
+        <pre>
+try {
+    // Code susceptible de provoquer une exception
+} catch (Exception e) {
+    System.out.println("Erreur : " + e.getMessage());
+} finally {
+    System.out.println("Bloc finally exécuté.");
+}
+        </pre>
+
+        <h2>5. Gérer plusieurs exceptions</h2>
+        <p>Si un code peut lever plusieurs exceptions, tu peux les gérer séparément avec plusieurs blocs <span class="highlight">catch</span>.</p>
+        <pre>
+public class Exemple {
+    public static void main(String[] args) {
+        try {
+            int[] tableau = {1, 2, 3};
+            System.out.println(tableau[5]); // Provoque une ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Erreur : Index hors limites.");
+        } catch (Exception e) {
+            System.out.println("Erreur générale : " + e.getMessage());
+        }
+    }
+}
+        </pre>
+
+        <h2>6. Propager une exception avec throw</h2>
+        <p>Tu peux utiliser <span class="highlight">throw</span> pour lever une exception manuellement :</p>
+        <pre>
+public class Exemple {
+    public static void main(String[] args) {
+        try {
+            verifierAge(15);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+
+    public static void verifierAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("L'âge doit être supérieur ou égal à 18.");
+        }
+    }
+}
+        </pre>
+
+        <h2>7. Exceptions vérifiées et non vérifiées</h2>
+        <ul>
+            <li><span class="highlight">Exceptions vérifiées</span> (checked exceptions) : Elles doivent être déclarées dans le code ou gérées avec un try-catch. Exemple : IOException.</li>
+            <li><span class="highlight">Exceptions non vérifiées</span> (unchecked exceptions) : Elles ne nécessitent pas de déclaration. Exemple : NullPointerException.</li>
+        </ul>
+
+        <h2>8. Conseils</h2>
+        <ul>
+            <li>Utilise des exceptions pour gérer des erreurs exceptionnelles, pas pour contrôler la logique normale.</li>
+            <li>Écris des messages d’erreur clairs pour faciliter le débogage.</li>
+            <li>Ferme toujours les ressources avec <span class="highlight">finally</span> ou utilise le <span class="highlight">try-with-resources</span>.</li>
+        </ul>
+
+        <h2>9. Liens utiles</h2>
+        <p>Pour plus d'informations, consulte la <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/" target="_blank">documentation officielle sur les exceptions</a>.</p>
+    </div>
+</body>
+</html>
