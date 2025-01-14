@@ -4,57 +4,70 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TP8 {
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		float kNumber1;
-		float kNumber2;
-		float kResult;
-		int kChoice;
-		
-		kResult=0;
-		Scanner kInput = new Scanner(System.in);
-		try {
-			System.out.printf("Entrez le premier nombre :");
-			kNumber1 = kInput.nextFloat();
-			System.out.printf("Entrez le second nombre :");
-			kNumber2 = kInput.nextFloat();
-			do {
-				System.out.printf("Choisissez une opération (0=Cancel, 1=Addition, 2=Soustraction, 3=Multiplication, 4=Division) :");
-				kChoice = kInput.nextInt();			
+		try (Scanner scanner = new Scanner(System.in)) {
+            // Lecture des nombres
+			float number1 = readFloat(scanner, "Entrez le premier nombre : ");
+			float number2 = readFloat(scanner, "Entrez le second nombre : ");
+			
+			// Lecture du choix de l'opération
+			int operation = readOperation(scanner);
+			
+			// Gestion des cas particuliers
+			if (operation == 0) {
+			System.out.println("Opération annulée.");
+			return;
 			}
-			while(kChoice < 0 || kChoice > 4);
-			switch(kChoice) {
-				case 1:
-					//addition
-					kResult=kNumber1+kNumber2;
-					break;
-				case 2:
-					//Soustraction
-					kResult=kNumber1-kNumber2;
-					break;
-				case 3:
-					//Multiplication
-					kResult=kNumber1*kNumber2;
-					break;
-				case 4:
-					//Division
-					kResult=kNumber1/kNumber2;
-					break;
-				default:
+			
+			// Calcul du résultat
+			float result = calculate(number1, number2, operation);
+			System.out.printf("Résultat : %.2f\n", result);
+			} catch (ArithmeticException e) {
+				System.out.println("Erreur : Division par zéro.");
+			} catch (InputMismatchException e) {
+				System.out.println("Erreur : Entrée invalide. Veuillez entrer un nombre.");
 			}
-			if(kChoice==0){
-				System.out.println("Opération annulée");			
-			}else {
-				System.out.printf("Résultat : %.1f", kResult);			
-			}
-		} catch (ArithmeticException e) {
-			System.out.println("Erreur : Division par zéro.");
-		} catch (InputMismatchException e) {
-			System.out.println("Erreur : Entrée invalide.");	
-		} finally {
-			kInput.close();			
 		}
+
+	/**
+	 * Lit un nombre flottant avec validation.
+	 */
+	public static float readFloat(Scanner scanner, String prompt) {
+		System.out.print(prompt);
+		return scanner.nextFloat();
 	}
 
+/**
+ * Lit et valide le choix de l'opération.
+ */
+	public static int readOperation(Scanner scanner) {
+		int operation;
+		do {
+			System.out.print("Choisissez une opération (0=Annuler, 1=Addition, 2=Soustraction, 3=Multiplication, 4=Division) : ");
+			operation = scanner.nextInt();
+		} while (operation < 0 || operation > 4);
+		return operation;
+	}
+
+/**
+ * Effectue le calcul en fonction de l'opération choisie.
+ */
+	public static float calculate(float number1, float number2, int operation) {
+		switch (operation) {
+			case 1: // Addition
+				return number1 + number2;
+			case 2: // Soustraction
+				return number1 - number2;
+			case 3: // Multiplication
+				return number1 * number2;
+			case 4: // Division
+				if (number2 == 0) {
+					throw new ArithmeticException("Erreur : Division par zéro.");
+				}
+				return number1 / number2;
+				default:
+					throw new IllegalArgumentException("Opération invalide.");
+		}
+	}
 }
