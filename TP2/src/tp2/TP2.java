@@ -45,7 +45,7 @@ public class TP2 {
 				break;
 			case 4:
 				//Division
-				if(kNumber2==0) {
+				if(kNumber2!=0) {
 					kResult=kNumber1/kNumber2;
 				}
 				break;
