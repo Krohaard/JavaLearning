@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 9 - Classes et Objets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 9 : Classes et Objets en Java</h1>
+        
+        <h2>1. Cours explicatif</h2>
+        <p><span class="highlight">Objectif</span> : Comprendre comment utiliser les classes et les objets pour structurer un programme en Java.</p>
+
+        <h3>Concepts abordés</h3>
+        <ul>
+            <li><span class="highlight">Classe :</span> Une classe est un plan ou modèle qui définit les propriétés et comportements d'un type d'objet.</li>
+            <li><span class="highlight">Objet :</span> Une instance d'une classe, créée à partir de celle-ci.</li>
+            <li><span class="highlight">Attributs :</span> Les variables membres d'une classe (représentent ses propriétés).</li>
+            <li><span class="highlight">Méthodes :</span> Les fonctions membres d'une classe (représentent ses comportements).</li>
+        </ul>
+
+        <h3>Exemple simple</h3>
+        <pre>
+public class Person {
+    String name;
+    int age;
+
+    // Constructeur
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Méthode
+    public void introduce() {
+        System.out.println("Bonjour, je m'appelle " + name + " et j'ai " + age + " ans.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 30); // Création d'un objet
+        person.introduce(); // Appel d'une méthode
+    }
+}
+        </pre>
+
+        <h2>2. Énoncé</h2>
+        <p>Écris un programme qui :</p>
+        <ol>
+            <li>Crée une classe <span class="highlight">Rectangle</span> avec :
+                <ul>
+                    <li>Deux attributs : largeur et hauteur (entiers).</li>
+                    <li>Un constructeur pour initialiser ces attributs.</li>
+                    <li>Deux méthodes :
+                        <ul>
+                            <li><span class="highlight">calculerAire()</span> : Renvoie l'aire du rectangle.</li>
+                            <li><span class="highlight">calculerPerimetre()</span> : Renvoie le périmètre du rectangle.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Dans la méthode <span class="highlight">main</span>, demande à l'utilisateur d'entrer les dimensions d'un rectangle.</li>
+            <li>Crée un objet <span class="highlight">Rectangle</span> avec les dimensions saisies.</li>
+            <li>Affiche l'aire et le périmètre du rectangle.</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+Entrez la largeur du rectangle : 5
+Entrez la hauteur du rectangle : 10
+Aire : 50
+Périmètre : 30
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilise des méthodes pour encapsuler les calculs d'aire et de périmètre.</li>
+            <li>Déclare tes attributs comme <span class="highlight">privés</span> et utilise des <span class="highlight">getters</span> si nécessaire.</li>
+            <li>Teste avec différentes dimensions pour vérifier le programme.</li>
+        </ul>
+
+        <h2>5. Temps estimé pour un développeur expert</h2>
+        <p>Environ 20 à 30 minutes.</p>
+    </div>
+</body>
+</html>
