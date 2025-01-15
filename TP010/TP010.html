@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 10 - Collections en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 10 : Collections en Java</h1>
+        
+        <h2>1. Cours explicatif</h2>
+        <p><span class="highlight">Objectif</span> : Comprendre les collections Java, comme les listes, les ensembles et les maps.</p>
+
+        <h3>Concepts abordés</h3>
+        <ul>
+            <li><span class="highlight">List</span> : Une collection ordonnée qui permet les doublons (exemple : <code>ArrayList</code>).</li>
+            <li><span class="highlight">Set</span> : Une collection non ordonnée qui ne permet pas les doublons (exemple : <code>HashSet</code>).</li>
+            <li><span class="highlight">Map</span> : Une collection de paires clé-valeur (exemple : <code>HashMap</code>).</li>
+        </ul>
+
+        <h3>Exemple simple</h3>
+        <p>Voici un exemple pour illustrer l'utilisation de trois types de collections :</p>
+        <pre>
+import java.util.*;
+
+public class ExempleCollections {
+    public static void main(String[] args) {
+        // List : Accepte les doublons
+        List&lt;String&gt; liste = new ArrayList&lt;&gt;();
+        liste.add("Java");
+        liste.add("Python");
+        liste.add("Java");
+        System.out.println("Liste : " + liste);
+
+        // Set : Pas de doublons
+        Set&lt;String&gt; ensemble = new HashSet&lt;&gt;();
+        ensemble.add("Java");
+        ensemble.add("Python");
+        ensemble.add("Java");
+        System.out.println("Ensemble : " + ensemble);
+
+        // Map : Paires clé-valeur
+        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("Java", 1995);
+        map.put("Python", 1991);
+        System.out.println("Map : " + map);
+    }
+}
+        </pre>
+
+        <h2>2. Énoncé</h2>
+        <p>Écris un programme qui :</p>
+        <ol>
+            <li>Crée une <span class="highlight">ArrayList</span> pour stocker des nombres entiers.</li>
+            <li>Ajoute 10 nombres aléatoires compris entre 1 et 100 dans cette liste.</li>
+            <li>Affiche les nombres de la liste.</li>
+            <li>Affiche :
+                <ul>
+                    <li>Le nombre le plus grand.</li>
+                    <li>Le nombre le plus petit.</li>
+                    <li>La somme de tous les nombres.</li>
+                    <li>La moyenne des nombres.</li>
+                </ul>
+            </li>
+            <li>Supprime les nombres pairs de la liste et affiche la liste mise à jour.</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+Liste originale : [45, 12, 78, 33, 56, 89, 24, 10, 67, 90]
+Plus grand : 90
+Plus petit : 10
+Somme : 504
+Moyenne : 50.4
+Liste après suppression des nombres pairs : [45, 33, 89, 67]
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilise la classe <span class="highlight">Random</span> pour générer des nombres aléatoires.</li>
+            <li>Utilise les méthodes de <span class="highlight">Collections</span> pour trouver le maximum et le minimum.</li>
+            <li>Utilise un <span class="highlight">Iterator</span> pour supprimer les nombres pairs de la liste.</li>
+        </ul>
+
+        <h2>5. Temps estimé pour un développeur expert</h2>
+        <p>Environ 20 à 30 minutes.</p>
+    </div>
+</body>
+</html>
