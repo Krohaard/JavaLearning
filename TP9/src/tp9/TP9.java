@@ -3,9 +3,8 @@
  */
 package tp9;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import tp9.Rectangle;
 
 /**
  * 
@@ -22,14 +21,24 @@ public class TP9 {
 		
 		kSquare = new Rectangle();
 		kRead = new Scanner(System.in);
-		System.out.printf("Entrez la largeur du rectangle : ");
-		kSquare.setkLenght(kRead.nextFloat());
-		kRead.nextLine(); //consommation de la touche enter
-		System.out.printf("Entrez la hauteur du rectangle : ");
-		kSquare.setkWeight(kRead.nextFloat());
-		kRead.nextLine(); //consommation de la touche enter
-		System.out.printf("Aire : %.2f\n", kSquare.kSurfaceRectangle());
-		System.out.printf("Périmètre : %.2f\n", kSquare.kPerimetreRectangle());
+		try {
+			System.out.printf("Entrez la largeur du rectangle : ");
+			kSquare.setWidth(kRead.nextFloat());
+			kRead.nextLine(); //consommation de la touche enter
+			System.out.printf("Entrez la hauteur du rectangle : ");
+			kSquare.setWidth(kRead.nextFloat());
+			kRead.nextLine(); //consommation de la touche enter
+			kSquare.checkDimension();
+			System.out.printf("Aire : %.2f\n", kSquare.calculateArea());
+			System.out.printf("Périmètre : %.2f\n", kSquare.calculatePerimeter());
+		} catch(ArithmeticException e) {
+			System.out.println(e.getMessage());
+		} catch (InputMismatchException e) {
+			System.out.println("Erreur : Entrée invalide.");
+		} finally {
+			kRead.close();
+		}
+		
 	}
 
 }

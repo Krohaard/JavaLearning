@@ -7,29 +7,33 @@ package tp9;
  * 
  */
 public class Rectangle {
-	private float kWeight;
+	private float kWidth;
 	private float kLenght;
 
 	//Constructeur
 	public Rectangle() {
 	}
 
-	public void setkWeight(float weight) {
-		this.kWeight = weight;
+	public void setWidth(float width) {
+		this.kWidth = width;
 	}
-	public float getWeight() {
-		return kWeight;
+	public float getWidth() {
+		return kWidth;
 	}
-	public void setkLenght(float lenght) {
+	public void setLenght(float lenght) {
 		this.kLenght = lenght;
 	}
 	public float getLenght() {
 		return kLenght;
 	}
-	public float kSurfaceRectangle() {
-		return kWeight * kLenght;
+	public float calculateArea() {
+		return kWidth * kLenght;
 	}
-	public float kPerimetreRectangle() {
-		return (kWeight + kLenght) * 2;
+	public float calculatePerimeter() {
+		return (kWidth + kLenght) * 2;
+	}
+	public void checkDimension() {
+		if(kWidth < 0 || kLenght < 0)
+			throw new ArithmeticException("Erreur : Les dimensions doivent être positives.");
 	}
 }
