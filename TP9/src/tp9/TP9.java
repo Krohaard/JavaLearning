@@ -22,12 +22,10 @@ public class TP9 {
 		kSquare = new Rectangle();
 		kRead = new Scanner(System.in);
 		try {
-			System.out.printf("Entrez la largeur du rectangle : ");
-			kSquare.setWidth(kRead.nextFloat());
-			kRead.nextLine(); //consommation de la touche enter
-			System.out.printf("Entrez la hauteur du rectangle : ");
-			kSquare.setWidth(kRead.nextFloat());
-			kRead.nextLine(); //consommation de la touche enter
+			kSquare.setWidth(kScannerInput(kRead,"Entrez la largeur du rectangle : "));
+//			kRead.nextLine(); //consommation de la touche enter
+			kSquare.setLenght(kScannerInput(kRead,"Entrez la hauteur du rectangle : "));
+//			kRead.nextLine(); //consommation de la touche enter
 			kSquare.checkDimension();
 			System.out.printf("Aire : %.2f\n", kSquare.calculateArea());
 			System.out.printf("Périmètre : %.2f\n", kSquare.calculatePerimeter());
@@ -39,6 +37,10 @@ public class TP9 {
 			kRead.close();
 		}
 		
+	}
+	public static float kScannerInput(Scanner kLine, String kText) {
+		System.out.printf(kText);
+		return kLine.nextFloat();
 	}
 
 }
