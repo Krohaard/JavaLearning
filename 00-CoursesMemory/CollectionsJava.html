@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - Les collections en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours : Les collections en Java</h1>
+        
+        <h2>1. Introduction aux collections</h2>
+        <p>Les <span class="highlight">collections</span> en Java sont des structures de données dynamiques permettant de stocker, manipuler et parcourir des groupes d’objets. La bibliothèque Java Collections Framework (<span class="highlight">JCF</span>) fournit des interfaces, classes et algorithmes pour travailler avec ces structures de manière efficace.</p>
+        <p>Elles remplacent les tableaux dans de nombreux cas grâce à leur flexibilité et leurs fonctionnalités riches.</p>
+        
+        <h3>1.1 Interfaces principales</h3>
+        <ul>
+            <li><span class="highlight">Collection</span> : L’interface de base pour toutes les collections.</li>
+            <li><span class="highlight">List</span> : Une collection ordonnée qui permet les doublons (ex. : <code>ArrayList</code>, <code>LinkedList</code>).</li>
+            <li><span class="highlight">Set</span> : Une collection non ordonnée sans doublons (ex. : <code>HashSet</code>, <code>TreeSet</code>).</li>
+            <li><span class="highlight">Queue</span> : Une collection pour les files d'attente, souvent ordonnée par priorité (ex. : <code>PriorityQueue</code>).</li>
+            <li><span class="highlight">Map</span> : Une collection de paires clé-valeur (ex. : <code>HashMap</code>, <code>TreeMap</code>).</li>
+        </ul>
+
+        <h3>1.2 Pourquoi utiliser les collections ?</h3>
+        <ul>
+            <li>Les collections permettent de stocker des objets dynamiquement sans définir de taille fixe.</li>
+            <li>Elles offrent des fonctionnalités prêtes à l’emploi pour trier, filtrer ou rechercher des données.</li>
+            <li>Elles sont interopérables avec de nombreux frameworks et API Java.</li>
+            <li>Manipuler des groupes de données efficacement grâce à des méthodes prêtes à l’emploi.</li>
+            <li>Éviter la duplication de code grâce à des structures standardisées.</li>
+        </ul>
+
+        <h2>2. Utilisation des collections</h2>
+
+        <h3>2.1 Où les utiliser ?</h3>
+        <ul>
+            <li><span class="highlight">Dans `main` :</span> Pour des programmes simples ou temporaires. Les collections sont déclarées localement et utilisées pour gérer les données dans le contexte limité de cette méthode.</li>
+            <li><span class="highlight">Dans une classe dédiée :</span> Pour centraliser la gestion des données (ex. : une liste d’utilisateurs). Utilisé pour des programmes structurés. Les collections sont encapsulées dans une classe, souvent avec des méthodes pour les manipuler.</li>
+            <li><span class="highlight">Dans un fichier séparé :</span> Idéal pour les programmes complexes nécessitant une organisation modulaire où plusieurs classes ou fichiers utilisent les mêmes collections. On crée une classe dédiée pour centraliser la logique métier et éviter la duplication.</li>
+        </ul>
+
+        <h3>2.2 Exemples d'utilisation</h3>
+
+        <h4>a. Dans `main`</h4>
+        <pre>
+import java.util.ArrayList;
+
+public class ExempleMain {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; noms = new ArrayList&lt;&gt;();
+        noms.add("Alice");
+        noms.add("Bob");
+        System.out.println(noms);
+    }
+}
+        </pre>
+
+        <h4>b. Encapsulation dans une classe</h4>
+        <pre>
+import java.util.ArrayList;
+
+public class PersonneManager {
+    private ArrayList&lt;String&gt; noms = new ArrayList&lt;&gt;();
+
+    public void ajouterNom(String nom) {
+        noms.add(nom);
+    }
+
+    public ArrayList&lt;String&gt; getNoms() {
+        return noms;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PersonneManager manager = new PersonneManager();
+        manager.ajouterNom("Alice");
+        System.out.println(manager.getNoms());
+    }
+}
+        </pre>
+
+        <h4>c. Dans un fichier séparé :</h4>
+        <pre>
+import java.util.HashMap;
+
+public class ConfigManager {
+private static HashMap&lt;String, String&gt; configs = new HashMap&lt;&gt;();
+
+static {
+    configs.put("db_url", "jdbc:mysql://localhost");
+    configs.put("db_user", "admin");
+}
+
+public static String getConfig(String key) {
+    return configs.getOrDefault(key, "Clé non trouvée");
+}
+}
+
+public class Main {
+public static void main(String[] args) {
+    System.out.println(ConfigManager.getConfig("db_url"));
+}
+}
+        </pre>
+
+        <h2>3. Comparaison avec les classes</h2>
+        <ul>
+            <li><span class="highlight">Classes :</span> Représentent un type défini par l’utilisateur avec des propriétés et des comportements, aussi défini par l'utilisateur. Par exemple, une classe <code>Person</code> peut contenir des attributs comme `nom` et `âge`, ainsi que des méthodes.</li>
+            <li><span class="highlight">Collections :</span> Représentent des groupes d’objets, mais ne définissent pas de comportements spécifiques pour ces objets.</li>
+       </ul>
+
+        <h2>4. Liste principale des collections</h2>
+
+        <h3>4.1 List</h3>
+        <p>Les listes permettent de stocker des éléments dans un ordre précis, avec des doublons autorisés.</p>
+        <ul>
+            <li><span class="highlight">ArrayList</span> : Une liste basée sur un tableau dynamique. Tableau dynamique rapide pour l'accès aux éléments.</li>
+            <li><span class="highlight">LinkedList</span> : Une liste basée sur une structure de liste chaînée. Idéal pour des ajouts/suppressions fréquents.</li>
+        </ul>
+        <pre>
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class ExempleList {
+    public static void main(String[] args) {
+        // ArrayList
+        ArrayList&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+        arrayList.add("Java");
+        arrayList.add("Python");
+        arrayList.add("C++");
+        System.out.println("ArrayList : " + arrayList);
+
+        // LinkedList
+        LinkedList&lt;String&gt; linkedList = new LinkedList&lt;&gt;();
+        linkedList.add("Ruby");
+        linkedList.add("Go");
+        System.out.println("LinkedList : " + linkedList);
+    }
+}
+        </pre>
+            
+        <h3>4.2 Set</h3>
+        <p>Les ensembles ne permettent pas les doublons.</p>
+        <ul>
+            <li><span class="highlight">HashSet</span> : Un ensemble non ordonné basé sur une table de hachage. Ensemble rapide, non ordonné.</li>
+            <li><span class="highlight">TreeSet</span> : Un ensemble trié basé sur un arbre binaire. Ensemble trié.</li>
+        </ul>
+        <pre>
+import java.util.HashSet;
+import java.util.TreeSet;
+
+public class ExempleSet {
+    public static void main(String[] args) {
+        // HashSet
+        HashSet&lt;String&gt; hashSet = new HashSet&lt;&gt;();
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Apple"); // Doublon ignoré
+        System.out.println("HashSet : " + hashSet);
+
+        // TreeSet
+        TreeSet&lt;String&gt; treeSet = new TreeSet&lt;&gt;();
+        treeSet.add("Zebra");
+        treeSet.add("Lion");
+        treeSet.add("Elephant");
+        System.out.println("TreeSet : " + treeSet);
+    }
+}
+        </pre>
+
+        <h3>4.3 Map</h3>
+        <p>Les maps permettent de stocker des paires clé-valeur.</p>
+        <ul>
+            <li><span class="highlight">HashMap</span> : Une map non ordonnée basée sur une table de hachage. Map rapide, non ordonnée.</li>
+            <li><span class="highlight">TreeMap</span> : Une map triée par clé.</li>
+        </ul>
+        <pre>
+import java.util.HashMap;
+import java.util.TreeMap;
+
+public class ExempleMap {
+    public static void main(String[] args) {
+        // HashMap
+        HashMap&lt;String, Integer&gt; hashMap = new HashMap&lt;&gt;();
+        hashMap.put("Alice", 25);
+        hashMap.put("Bob", 30);
+        hashMap.put("Alice", 28); // Remplace l'ancienne valeur
+        System.out.println("HashMap : " + hashMap);
+
+        // TreeMap
+        TreeMap&lt;String, Integer&gt; treeMap = new TreeMap&lt;&gt;();
+        treeMap.put("Charlie", 35);
+        treeMap.put("Alice", 28);
+        System.out.println("TreeMap : " + treeMap);
+    }
+}
+        </pre>
+
+        <h3>4.4 Méthodes utiles</h3>
+        <ul>
+            <li><span class="highlight">add()</span>, <span class="highlight">remove()</span>, <span class="highlight">contains()</span> : Pour ajouter, supprimer ou vérifier un élément.</li>
+            <li><span class="highlight">size()</span> : Renvoie le nombre d'éléments.</li>
+            <li><span class="highlight">isEmpty()</span> : Vérifie si la collection est vide.</li>
+            <li><span class="highlight">get()</span> : Pour récupérer un élément par son index (List).</li>
+        </ul>
+        <h3>4.5 Classes supplémentaires</h3>
+        <ul>
+            <li><span class="highlight">Stack</span> : Une pile (LIFO).</li>
+            <li><span class="highlight">Vector</span> : Similaire à ArrayList, mais synchronisé.</li>
+            <li><span class="highlight">LinkedHashSet</span> : Un <code>Set</code> qui maintient l’ordre d’insertion.</li>
+            <li><span class="highlight">ConcurrentHashMap</span> : Version thread-safe de <code>HashMap</code>.</li>
+        </ul>
+
+        <h2>5. Avantages et inconvénients des collections</h2>
+        <h3>5.1 Avantages</h3>
+        <ul>
+            <li><span class="highlight">Dynamisme :</span> Elles peuvent croître ou décroître en taille.</li>
+            <li><span class="highlight">Fonctionnalités riches :</span> Algorithmes prêts à l'emploi.</li>
+            <li><span class="highlight">Flexibilité :</span> Les collections sont dynamiques et peuvent croître ou décroître selon les besoins.</li>
+            <li><span class="highlight">Richesse fonctionnelle :</span> La JCF propose des algorithmes intégrés pour trier, rechercher, etc.</li>
+            <li><span class="highlight">Interopérabilité :</span> Les collections sont compatibles avec des API et frameworks tiers.</li>
+        </ul>
+        <h3>5.2 Inconvénients</h3>
+        <ul>
+            <li><span class="highlight">Performance :</span> Certaines opérations (tri, recherche) peuvent être coûteuses.</li>
+            <li><span class="highlight">Complexité :</span> Peut être déroutant pour les débutants.</li>
+            <li>Les collections ne permettent pas de définir directement des comportements spécifiques (contrairement aux classes).</li>
+            <li>La manipulation des types primitifs (int, char, etc.) nécessite un <span class="highlight">autoboxing</span>, ce qui peut avoir un impact sur les performances.</li>
+            <li>Les collections sont plus complexes à utiliser que les tableaux pour les débutants.</li>
+        </ul>
+
+        <h2>6. Liens utiles</h2>
+        <p>Consultez la <a href="https://docs.oracle.com/javase/tutorial/collections/" target="_blank">documentation officielle sur les collections</a>.</p>
+    </div>
+</body>
+</html>
