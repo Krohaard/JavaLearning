@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours sur les exceptions en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ffa500;
+        }
+        code {
+            background-color: #333;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #f8f8f2;
+        }
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .note {
+            background-color: #444;
+            padding: 10px;
+            border-left: 4px solid #ffa500;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours sur les exceptions en Java</h1>
+
+        <!-- Introduction -->
+        <div class="section">
+            <h2>Introduction aux exceptions</h2>
+            <p>Une exception en Java est un événement qui se produit pendant l'exécution d'un programme et qui perturbe le flux normal des instructions. Les exceptions sont utilisées pour gérer les erreurs et les situations inattendues de manière structurée.</p>
+            <p>La hiérarchie des exceptions en Java est la suivante :</p>
+            <ul>
+                <li><code>Throwable</code> (classe racine)</li>
+                <li><code>Error</code> (erreurs graves, non gérées)</li>
+                <li><code>Exception</code> (exceptions vérifiées et non vérifiées)</li>
+                <li><code>RuntimeException</code> (exceptions non vérifiées)</li>
+            </ul>
+        </div>
+
+        <!-- Types d'exceptions -->
+        <div class="section">
+            <h2>Types d'exceptions</h2>
+            <h3>Exceptions vérifiées (checked exceptions)</h3>
+            <p>Les exceptions vérifiées doivent être gérées explicitement par le programmeur, soit avec un bloc <code>try-catch</code>, soit en les propageant avec <code>throws</code>. Exemple : <code>IOException</code>.</p>
+            <pre><code>
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class CheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            FileInputStream file = new FileInputStream("fichier.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé !");
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Exceptions non vérifiées (unchecked exceptions)</h3>
+            <p>Les exceptions non vérifiées ne nécessitent pas de gestion explicite. Elles sont généralement causées par des erreurs de logique. Exemple : <code>NullPointerException</code>.</p>
+            <pre><code>
+public class UncheckedExceptionExample {
+    public static void main(String[] args) {
+        String str = null;
+        try {
+            System.out.println(str.length());
+        } catch (NullPointerException e) {
+            System.out.println("Erreur : la chaîne est null !");
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Erreurs (errors)</h3>
+            <p>Les erreurs sont des problèmes graves qui ne devraient pas être capturés. Exemple : <code>OutOfMemoryError</code>.</p>
+        </div>
+
+        <!-- Gestion des exceptions -->
+        <div class="section">
+            <h2>Gestion des exceptions</h2>
+            <h3>Bloc <code>try-catch</code></h3>
+            <p>Le bloc <code>try-catch</code> permet de capturer et de gérer les exceptions.</p>
+            <pre><code>
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // Division par zéro
+        } catch (ArithmeticException e) {
+            System.out.println("Erreur : division par zéro !");
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Bloc <code>finally</code></h3>
+            <p>Le bloc <code>finally</code> est exécuté quoi qu'il arrive, même si une exception est levée.</p>
+            <pre><code>
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Erreur : division par zéro !");
+        } finally {
+            System.out.println("Bloc finally exécuté.");
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Multi-catch</h3>
+            <p>Depuis Java 7, il est possible de capturer plusieurs exceptions dans un seul bloc <code>catch</code>.</p>
+            <pre><code>
+public class MultiCatchExample {
+    public static void main(String[] args) {
+        try {
+            int[] array = new int[5];
+            array[10] = 50; // ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <!-- Propagation des exceptions -->
+        <div class="section">
+            <h2>Propagation des exceptions</h2>
+            <h3>Lancer une exception avec <code>throw</code></h3>
+            <p>Vous pouvez lancer une exception explicitement avec le mot-clé <code>throw</code>.</p>
+            <pre><code>
+public class ThrowExample {
+    public static void main(String[] args) {
+        try {
+            throw new IllegalArgumentException("Argument invalide !");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Déclarer une exception avec <code>throws</code></h3>
+            <p>Si une méthode ne gère pas une exception vérifiée, elle doit la déclarer avec <code>throws</code>.</p>
+            <pre><code>
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+
+public class ThrowsExample {
+    public static void main(String[] args) {
+        try {
+            ouvrirFichier("fichier.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier non trouvé !");
+        }
+    }
+
+    public static void ouvrirFichier(String chemin) throws FileNotFoundException {
+        FileInputStream file = new FileInputStream(chemin);
+    }
+}
+            </code></pre>
+        </div>
+
+        <!-- Exceptions personnalisées -->
+        <div class="section">
+            <h2>Création d'exceptions personnalisées</h2>
+            <p>Vous pouvez créer vos propres exceptions en étendant la classe <code>Exception</code> ou <code>RuntimeException</code>.</p>
+            <pre><code>
+class MonException extends Exception {
+    public MonException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionExample {
+    public static void main(String[] args) {
+        try {
+            throw new MonException("Ceci est une exception personnalisée !");
+        } catch (MonException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <!-- Bonnes pratiques -->
+        <div class="section">
+            <h2>Bonnes pratiques</h2>
+            <ul>
+                <li>Utilisez les exceptions uniquement pour des situations exceptionnelles.</li>
+                <li>Évitez de capturer des exceptions génériques comme <code>Exception</code>.</li>
+                <li>Ne laissez jamais un bloc <code>catch</code> vide.</li>
+                <li>Documentez les exceptions avec <code>@throws</code> dans les commentaires Javadoc.</li>
+            </ul>
+        </div>
+
+        <!-- Exercices pratiques -->
+        <div class="section">
+            <h2>Exercices pratiques</h2>
+            <p>Voici quelques exercices pour pratiquer :</p>
+            <ol>
+                <li>Créez une méthode qui divise deux nombres et gère l'exception <code>ArithmeticException</code>.</li>
+                <li>Écrivez un programme qui lit un fichier et gère l'exception <code>FileNotFoundException</code>.</li>
+                <li>Créez une exception personnalisée pour gérer un âge invalide (par exemple, âge négatif).</li>
+            </ol>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>Les exceptions sont un outil puissant en Java pour gérer les erreurs et les situations inattendues. En comprenant leur fonctionnement et en suivant les bonnes pratiques, vous pouvez écrire des programmes plus robustes et maintenables.</p>
+        </div>
+    </div>
+</body>
+</html>

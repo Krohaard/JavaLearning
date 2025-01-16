@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours sur l'écriture et la lecture de fichiers en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ffa500;
+        }
+        code {
+            background-color: #333;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #f8f8f2;
+        }
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours sur l'écriture et la lecture de fichiers en Java</h1>
+
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>Dans ce cours, nous allons apprendre à lire et écrire des fichiers en Java. Nous aborderons les différentes classes et méthodes disponibles pour manipuler des fichiers texte et binaires.</p>
+        </div>
+
+        <div class="section">
+            <h2>Lecture de fichiers</h2>
+            <h3>Utilisation de <code>FileReader</code> et <code>BufferedReader</code></h3>
+            <pre><code>
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LectureFichier {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("fichier.txt"))) {
+            String ligne;
+            while ((ligne = br.readLine()) != null) {
+                System.out.println(ligne);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Utilisation de <code>Scanner</code></h3>
+            <pre><code>
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class LectureFichierScanner {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(new File("fichier.txt"))) {
+            while (scanner.hasNextLine()) {
+                String ligne = scanner.nextLine();
+                System.out.println(ligne);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Gestion des exceptions</h3>
+            <p>Il est important de gérer les exceptions lors de la lecture de fichiers pour éviter des erreurs inattendues. Utilisez des blocs <code>try-catch</code> pour capturer les exceptions.</p>
+        </div>
+
+        <div class="section">
+            <h2>Écriture de fichiers</h2>
+            <h3>Utilisation de <code>FileWriter</code> et <code>BufferedWriter</code></h3>
+            <pre><code>
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EcritureFichier {
+    public static void main(String[] args) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("fichier.txt"))) {
+            bw.write("Bonjour, monde !");
+            bw.newLine();
+            bw.write("Ceci est un exemple d'écriture de fichier.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Utilisation de <code>PrintWriter</code></h3>
+            <pre><code>
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+public class EcritureFichierPrintWriter {
+    public static void main(String[] args) {
+        try (PrintWriter pw = new PrintWriter("fichier.txt")) {
+            pw.println("Bonjour, monde !");
+            pw.println("Ceci est un exemple d'écriture de fichier avec PrintWriter.");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Gestion des exceptions</h3>
+            <p>Comme pour la lecture, l'écriture de fichiers peut générer des exceptions. Utilisez des blocs <code>try-catch</code> pour les gérer.</p>
+        </div>
+
+        <div class="section">
+            <h2>Manipulation de fichiers binaires</h2>
+            <h3>Utilisation de <code>FileInputStream</code> et <code>FileOutputStream</code></h3>
+            <pre><code>
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FichierBinaire {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream("entree.bin");
+             FileOutputStream fos = new FileOutputStream("sortie.bin")) {
+            int octet;
+            while ((octet = fis.read()) != -1) {
+                fos.write(octet);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+
+            <h3>Utilisation de <code>DataInputStream</code> et <code>DataOutputStream</code></h3>
+            <pre><code>
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FichierBinaireData {
+    public static void main(String[] args) {
+        try (DataInputStream dis = new DataInputStream(new FileInputStream("entree.bin"));
+             DataOutputStream dos = new DataOutputStream(new FileOutputStream("sortie.bin"))) {
+            int donnee;
+            while ((donnee = dis.readInt()) != -1) {
+                dos.writeInt(donnee);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div class="section">
+            <h2>Exercices pratiques</h2>
+            <p>Voici quelques exercices pour pratiquer ce que vous avez appris :</p>
+            <ul>
+                <li>Créez un programme qui lit un fichier texte et compte le nombre de mots.</li>
+                <li>Écrivez un programme qui copie le contenu d'un fichier texte dans un autre fichier.</li>
+                <li>Créez un programme qui lit un fichier binaire et affiche son contenu en hexadécimal.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>Vous avez maintenant les bases pour lire et écrire des fichiers en Java. N'hésitez pas à explorer davantage les classes et méthodes disponibles dans l'API Java pour manipuler des fichiers.</p>
+        </div>
+    </div>
+</body>
+</html>
