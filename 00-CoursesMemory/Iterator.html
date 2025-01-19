@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - Iterator en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours : Iterator en Java</h1>
+        
+        <h2>1. Qu'est-ce qu'un Iterator ?</h2>
+        <p>En Java, un <span class="highlight">Iterator</span> est une interface qui permet de parcourir une collection (ex. : <code>ArrayList</code>, <code>HashSet</code>) de manière séquentielle sans exposer sa structure interne.</p>
+
+        <h3>Caractéristiques principales :</h3>
+        <ul>
+            <li>Fournit des méthodes pour parcourir les éléments d'une collection.</li>
+            <li>Permet de supprimer des éléments en toute sécurité lors du parcours.</li>
+            <li>Évite les problèmes de modification concurrente (ConcurrentModificationException).</li>
+        </ul>
+
+        <h2>2. Méthodes de l'interface Iterator</h2>
+        <ul>
+            <li><span class="highlight">hasNext()</span> :
+                <p>Retourne <code>true</code> s'il y a un autre élément à parcourir.</p>
+                <pre>
+Iterator&lt;String&gt; it = liste.iterator();
+while (it.hasNext()) {
+    System.out.println(it.next());
+}
+                </pre>
+            </li>
+            <li><span class="highlight">next()</span> :
+                <p>Retourne l'élément suivant de la collection.</p>
+                <p><span class="highlight">Attention :</span> Si aucun élément n'est disponible, l'appel lève une <code>NoSuchElementException</code>.</p>
+            </li>
+            <li><span class="highlight">remove()</span> :
+                <p>Supprime l'élément courant de la collection. Cette méthode ne peut être appelée qu'une seule fois après chaque <code>next()</code>.</p>
+                <pre>
+Iterator&lt;Integer&gt; it = liste.iterator();
+while (it.hasNext()) {
+    int val = it.next();
+    if (val % 2 == 0) { // Supprime les nombres pairs
+        it.remove();
+    }
+}
+                </pre>
+            </li>
+        </ul>
+
+        <h2>3. Exemple simple avec Iterator</h2>
+        <pre>
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ExempleIterator {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; noms = new ArrayList&lt;&gt;();
+        noms.add("Alice");
+        noms.add("Bob");
+        noms.add("Charlie");
+
+        Iterator&lt;String&gt; it = noms.iterator();
+        System.out.println("Parcours de la liste :");
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+    }
+}
+        </pre>
+
+        <h2>4. Exemple avec suppression sécurisée</h2>
+        <pre>
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ExempleSuppression {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; nombres = new ArrayList&lt;&gt;();
+        nombres.add(10);
+        nombres.add(15);
+        nombres.add(20);
+
+        Iterator&lt;Integer&gt; it = nombres.iterator();
+        while (it.hasNext()) {
+            if (it.next() % 2 == 0) { // Supprime les nombres pairs
+                it.remove();
+            }
+        }
+
+        System.out.println("Liste après suppression : " + nombres);
+    }
+}
+        </pre>
+
+        <h2>5. Différences entre Iterator et for-each</h2>
+        <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr style="background-color: #ffa726; color: #121212;">
+                    <th style="padding: 10px; text-align: left;">Caractéristique</th>
+                    <th style="padding: 10px; text-align: left;">Iterator</th>
+                    <th style="padding: 10px; text-align: left;">For-each</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Suppression d'éléments</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Possible avec <code>remove()</code>.</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Non sécurisé, lève une exception si utilisé directement.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Simplicité</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Plus détaillé mais plus verbeux.</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Plus compact et lisible.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Utilisation universelle</td>
+                    <td style="padding: 10px;">Compatible avec toutes les collections.</td>
+                    <td style="padding: 10px;">Uniquement les collections qui implémentent <code>Iterable</code>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>6. Liens utiles</h2>
+        <p>Pour plus d'informations, consulte la <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html" target="_blank">documentation officielle sur Iterator</a>.</p>
+    </div>
+</body>
+</html>

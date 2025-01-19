@@ -4,6 +4,8 @@
 package tp010;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -18,12 +20,16 @@ public class TP010 {
 		// TODO Auto-generated method stub
 		ArrayList<Integer> kRandList;
 		kRandList = kRandomList(10);
-		System.out.println("Liste originale : " + kRandList);
-		System.out.println("Plus grand : " + kMaxList(kRandList));
-		System.out.println("Plus petit : " + kMinList(kRandList));
-		System.out.println("Somme : " + kSumList(kRandList));
-		System.out.println("Moyenne : " + kMeanList(kRandList));
-		System.out.println("Liste après suppression des nombres pairs : " + kRemoverEven(kRandList));
+		try {
+			System.out.println("Liste originale : " + kRandList);
+			System.out.println("Plus grand : " + kMaxList(kRandList));
+			System.out.println("Plus petit : " + kMinList(kRandList));
+			System.out.println("Somme : " + kSumList(kRandList));
+			System.out.println("Moyenne : " + kMeanList(kRandList));
+			System.out.println("Liste après suppression des nombres pairs : " + kRemoverEven(kRandList.iterator()));
+		} catch(Exception e) {
+			
+		}
 	}
 	public static ArrayList<Integer> kRandomList(int kNumber){
 		int kMin;
@@ -42,35 +48,36 @@ public class TP010 {
 		return kList;
 	}
 	public static int kMinList(ArrayList<Integer> kData) {
-		int kMin = kData.getFirst();
-		for(Integer kElement : kData) {
-			if(kElement <= kMin) kMin = kElement;
+		if (kData.isEmpty()) {
+		    throw new IllegalArgumentException("La liste est vide.");
 		}
-		return kMin;
+		return Collections.min(kData);
 	}
 	public static int kMaxList(ArrayList<Integer> kData) {
-		int kMax = kData.getFirst();
-		for(Integer kElement : kData) {
-			if(kElement >= kMax) kMax = kElement;
+		if (kData.isEmpty()) {
+		    throw new IllegalArgumentException("La liste est vide.");
 		}
-		return kMax;
+		return Collections.max(kData);
 	}
 	public static int kSumList(ArrayList<Integer> kData) {
 		int kSum=0;
+		if (kData.isEmpty()) {
+		    throw new IllegalArgumentException("La liste est vide.");
+		}
 		for(Integer kElement : kData) {
 			kSum += kElement;
 		}
 		return kSum;
 	}
 	public static float kMeanList(ArrayList<Integer> kData) {
-		return (kSumList(kData)/kData.size());
+		return (float) kSumList(kData)/kData.size();
 	}
-	public static ArrayList<Integer> kRemoverEven(ArrayList<Integer> kData){
-		ArrayList<Integer> kTemp=(ArrayList<Integer>) kData.clone();
-		for(Integer kElement : kData) {
-			if((kElement % 2) == 0)
-				kTemp.remove(kTemp.indexOf(kElement));
+	public static Iterator<Integer> kRemoverEven(Iterator<Integer> kData){
+		while (kData.hasNext()) {
+		    if (kData.next() % 2 == 0) {
+		    	kData.remove();
+		    }
 		}
-		return kTemp;
+		return kData;
 	}
 }

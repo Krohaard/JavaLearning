@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - Iterator en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cours : La méthode Iterator en Java</h1>
+
+        <h2>1. Qu'est-ce qu'un <span class="highlight">Iterator</span> ?</h2>
+        <p>Un <span class="highlight">Iterator</span> est un objet qui permet de parcourir les éléments d'une collection (comme une liste ou un ensemble) de manière séquentielle sans exposer la structure interne de cette collection.</p>
+        <p>Il est très utile pour parcourir une collection et effectuer des opérations comme la suppression d'éléments en toute sécurité.</p>
+
+        <h2>2. Pourquoi utiliser un <span class="highlight">Iterator</span> ?</h2>
+        <ul>
+            <li><span class="highlight">Suppression sécurisée :</span> Lorsqu’on modifie une collection pendant son parcours, un <code>Iterator</code> évite les erreurs comme <code>ConcurrentModificationException</code>.</li>
+            <li><span class="highlight">Uniformité :</span> Il fournit un moyen standard de parcourir différentes collections, quelles que soient leurs implémentations.</li>
+        </ul>
+
+        <h2>3. Méthodes principales de l'interface <code>Iterator</code></h2>
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
+            <thead>
+                <tr style="background-color: #ffa726; color: #121212;">
+                    <th>Méthode</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>hasNext()</code></td>
+                    <td>Retourne <code>true</code> s'il reste des éléments à parcourir dans la collection.</td>
+                </tr>
+                <tr>
+                    <td><code>next()</code></td>
+                    <td>Retourne l'élément suivant de la collection.</td>
+                </tr>
+                <tr>
+                    <td><code>remove()</code></td>
+                    <td>Supprime l'élément courant (celui retourné par <code>next()</code>) de la collection.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Exemples d'utilisation</h2>
+
+        <h3>4.1 Parcourir une liste</h3>
+        <pre>
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ExempleIterator {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; noms = new ArrayList&lt;&gt;();
+        noms.add("Alice");
+        noms.add("Bob");
+        noms.add("Charlie");
+
+        Iterator&lt;String&gt; iterator = noms.iterator();
+
+        while (iterator.hasNext()) {
+            String nom = iterator.next();
+            System.out.println(nom);
+        }
+    }
+}
+        </pre>
+
+        <h3>4.2 Supprimer des éléments pairs d'une liste</h3>
+        <pre>
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ExempleSuppression {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; nombres = new ArrayList&lt;&gt;();
+        nombres.add(1);
+        nombres.add(2);
+        nombres.add(3);
+        nombres.add(4);
+
+        Iterator&lt;Integer&gt; iterator = nombres.iterator();
+
+        while (iterator.hasNext()) {
+            Integer nombre = iterator.next();
+            if (nombre % 2 == 0) { // Supprimer les nombres pairs
+                iterator.remove();
+            }
+        }
+
+        System.out.println("Liste après suppression : " + nombres);
+    }
+}
+        </pre>
+
+        <h3>4.3 Erreur sans <code>Iterator</code></h3>
+        <p>Voici un exemple montrant une erreur lorsqu'on utilise une boucle classique pour modifier une collection :</p>
+        <pre>
+ArrayList&lt;Integer&gt; nombres = new ArrayList&lt;&gt;();
+nombres.add(1);
+nombres.add(2);
+nombres.add(3);
+
+for (Integer nombre : nombres) {
+    if (nombre % 2 == 0) {
+        nombres.remove(nombre); // Provoque ConcurrentModificationException
+    }
+}
+        </pre>
+
+        <h2>5. Avantages et limites</h2>
+
+        <h3>5.1 Avantages</h3>
+        <ul>
+            <li>Permet de parcourir et de modifier des collections de manière sécurisée.</li>
+            <li>Offre une abstraction pour manipuler différentes collections sans connaître leur implémentation.</li>
+        </ul>
+
+        <h3>5.2 Limites</h3>
+        <ul>
+            <li>Un <code>Iterator</code> est <span class="highlight">unidirectionnel</span> (parcours dans un seul sens).</li>
+            <li>Il ne permet pas d'ajouter ou de remplacer des éléments directement.</li>
+        </ul>
+
+        <h2>6. Résumé</h2>
+        <ul>
+            <li>Utilisez <code>Iterator</code> pour parcourir des collections et supprimer des éléments en toute sécurité.</li>
+            <li>Préférez <code>ListIterator</code> si vous avez besoin d’un parcours bidirectionnel.</li>
+        </ul>
+
+        <h2>7. Liens utiles</h2>
+        <p>Pour en savoir plus, consultez la <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+</body>
+</html>
