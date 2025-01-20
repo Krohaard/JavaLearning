@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 12 - Gestion d'une bibliothèque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 12 : Gestion d'une bibliothèque</h1>
+        
+        <h2>1. Objectif</h2>
+        <p>Créer une application permettant de gérer les livres d'une bibliothèque. Cet exercice combine l'utilisation des <span class="highlight">classes</span> et des <span class="highlight">collections</span> pour modéliser un système de gestion de livres.</p>
+
+        <h2>2. Énoncé</h2>
+        <p>Écrivez un programme en Java qui :</p>
+        <ol>
+            <li>Crée une classe <span class="highlight">Livre</span> avec les attributs suivants :
+                <ul>
+                    <li><span class="highlight">titre</span> (String)</li>
+                    <li><span class="highlight">auteur</span> (String)</li>
+                    <li><span class="highlight">annéePublication</span> (int)</li>
+                    <li><span class="highlight">disponible</span> (boolean)</li>
+                </ul>
+            </li>
+            <li>Crée une classe <span class="highlight">Bibliotheque</span> avec :
+                <ul>
+                    <li>Une collection (<code>ArrayList</code>) pour stocker les livres.</li>
+                    <li>Des méthodes pour :
+                        <ul>
+                            <li>Ajouter un livre.</li>
+                            <li>Rechercher un livre par titre.</li>
+                            <li>Afficher la liste des livres disponibles.</li>
+                            <li>Emprunter un livre (le marquer comme non disponible).</li>
+                            <li>Retourner un livre (le marquer comme disponible).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Dans la méthode <span class="highlight">main</span>, crée une instance de la classe <code>Bibliotheque</code> et interagit avec l'utilisateur pour ajouter, emprunter ou retourner des livres.</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+--- MENU ---
+1. Ajouter un livre
+2. Rechercher un livre par titre
+3. Afficher les livres disponibles
+4. Emprunter un livre
+5. Retourner un livre
+6. Quitter
+
+Choix : 1
+Entrez le titre du livre : Les Misérables
+Entrez l'auteur du livre : Victor Hugo
+Entrez l'année de publication : 1862
+
+--- MENU ---
+1. Ajouter un livre
+2. Rechercher un livre par titre
+3. Afficher les livres disponibles
+4. Emprunter un livre
+5. Retourner un livre
+6. Quitter
+
+Choix : 3
+Livres disponibles :
+- Les Misérables (Victor Hugo, 1862)
+
+Choix : 4
+Entrez le titre du livre à emprunter : Les Misérables
+Le livre "Les Misérables" a été emprunté avec succès.
+
+--- MENU ---
+1. Ajouter un livre
+2. Rechercher un livre par titre
+3. Afficher les livres disponibles
+4. Emprunter un livre
+5. Retourner un livre
+6. Quitter
+
+Choix : 3
+Aucun livre disponible.
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilisez une boucle pour afficher le menu principal et permettre plusieurs actions utilisateur.</li>
+            <li>Ajoutez des validations (ex. : vérifier si un livre existe avant de l'emprunter ou le retourner).</li>
+            <li>La méthode <code>rechercherParTitre</code> peut utiliser un <code>Stream</code> pour simplifier la recherche.</li>
+            <li>Encapsulez les données dans les classes <code>Livre</code> et <code>Bibliotheque</code> pour respecter les principes d'encapsulation.</li>
+        </ul>
+
+        <h2>5. Concepts abordés</h2>
+        <ul>
+            <li>Conception de classes orientées objet.</li>
+            <li>Utilisation des collections pour gérer des données dynamiques.</li>
+            <li>Interactions utilisateur via un menu en boucle.</li>
+        </ul>
+
+        <h2>6. Temps estimé</h2>
+        <p>Un développeur expert mettrait environ 45 minutes à 1 heure pour résoudre cet exercice.</p>
+    </div>
+</body>
+</html>

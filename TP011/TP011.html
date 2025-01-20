@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 11 - Gestionnaire de Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 11 : Gestionnaire de Notes</h1>
+        
+        <h2>1. Objectif</h2>
+        <p>Créer une application simple pour gérer les notes d'étudiants. Vous utiliserez les <span class="highlight">Collections</span> pour stocker les données et les <span class="highlight">Streams</span> pour effectuer des calculs et manipuler les données de manière fonctionnelle.</p>
+
+        <h2>2. Énoncé</h2>
+        <p>Écrivez un programme en Java qui :</p>
+        <ol>
+            <li>Demande à l'utilisateur d'entrer les noms des étudiants et leurs notes (sur 20).</li>
+            <li>Stocke les données dans une <span class="highlight">Map</span> où :
+                <ul>
+                    <li>La clé est le nom de l'étudiant (String).</li>
+                    <li>La valeur est la note de l'étudiant (Double).</li>
+                </ul>
+            </li>
+            <li>Affiche les statistiques suivantes :
+                <ul>
+                    <li>La moyenne des notes.</li>
+                    <li>La note maximale et l'étudiant correspondant.</li>
+                    <li>La note minimale et l'étudiant correspondant.</li>
+                </ul>
+            </li>
+            <li>Affiche la liste des étudiants ayant une note supérieure ou égale à la moyenne.</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+Entrez le nom de l'étudiant (ou "fin" pour terminer) : Alice
+Entrez la note de Alice : 15
+Entrez le nom de l'étudiant (ou "fin" pour terminer) : Bob
+Entrez la note de Bob : 12
+Entrez le nom de l'étudiant (ou "fin" pour terminer) : Charlie
+Entrez la note de Charlie : 18
+Entrez le nom de l'étudiant (ou "fin" pour terminer) : fin
+
+Moyenne des notes : 15.0
+Note maximale : 18 (Charlie)
+Note minimale : 12 (Bob)
+Étudiants ayant une note supérieure ou égale à la moyenne :
+- Alice (15)
+- Charlie (18)
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilisez une boucle pour collecter les noms et notes des étudiants. Arrêtez-vous lorsque l'utilisateur entre <code>fin</code>.</li>
+            <li>Utilisez les Streams pour effectuer des calculs comme la moyenne et filtrer les étudiants ayant une note >= moyenne.</li>
+            <li>Pour la note maximale/minimale, utilisez les méthodes de <span class="highlight">Collections</span> ou des Streams.</li>
+        </ul>
+
+        <h2>5. Concepts abordés</h2>
+        <ul>
+            <li>Utilisation de la classe <span class="highlight">HashMap</span> pour stocker des données clé-valeur.</li>
+            <li>Manipulation des Streams pour effectuer des calculs et filtrer les données.</li>
+            <li>Gestion des entrées utilisateur avec une boucle.</li>
+        </ul>
+
+        <h2>6. Temps estimé</h2>
+        <p>Un développeur expert mettrait environ 30 à 45 minutes pour résoudre cet exercice.</p>
+    </div>
+</body>
+</html>

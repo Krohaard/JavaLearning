@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Différence entre Streams et Collections en Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Différence entre Streams et Collections en Java</h1>
+        
+        <h2>1. Introduction</h2>
+        <p>Les <span class="highlight">Collections</span> et les <span class="highlight">Streams</span> sont deux concepts clés de la programmation en Java, mais ils servent à des fins différentes :</p>
+        <ul>
+            <li><span class="highlight">Collections :</span> Structures de données qui stockent des objets en mémoire.</li>
+            <li><span class="highlight">Streams :</span> Un flux d'éléments qui permet de traiter les données de manière déclarative et fonctionnelle.</li>
+        </ul>
+
+        <h2>2. Principales différences</h2>
+        <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr style="background-color: #ffa726; color: #121212;">
+                    <th style="padding: 10px; text-align: left;">Caractéristique</th>
+                    <th style="padding: 10px; text-align: left;">Collections</th>
+                    <th style="padding: 10px; text-align: left;">Streams</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Nature</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Stockent des données en mémoire.</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Représentent un flux d'éléments traités séquentiellement ou parallèlement.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">État</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Mutable : Les éléments peuvent être ajoutés, modifiés ou supprimés.</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Immuable : Une fois le flux traité, il ne peut plus être réutilisé.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Itération</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Itération externe avec des boucles (ex. : for-each).</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Itération interne avec des méthodes comme <code>forEach</code>.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Traitement</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Principalement impératif.</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">Déclaratif et fonctionnel.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Parallélisme</td>
+                    <td style="padding: 10px;">Non pris en charge directement.</td>
+                    <td style="padding: 10px;">Prise en charge native avec <code>parallelStream()</code>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. Exemple pratique</h2>
+
+        <h3>3.1 Avec une Collection</h3>
+        <pre>
+import java.util.ArrayList;
+
+public class ExempleCollection {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; nombres = new ArrayList&lt;&gt;();
+        nombres.add(10);
+        nombres.add(20);
+        nombres.add(30);
+
+        int somme = 0;
+        for (int nombre : nombres) {
+            somme += nombre;
+        }
+        System.out.println("Somme : " + somme);
+    }
+}
+        </pre>
+
+        <h3>3.2 Avec un Stream</h3>
+        <pre>
+import java.util.ArrayList;
+
+public class ExempleStream {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; nombres = new ArrayList&lt;&gt;();
+        nombres.add(10);
+        nombres.add(20);
+        nombres.add(30);
+
+        int somme = nombres.stream()
+                           .mapToInt(Integer::intValue)
+                           .sum();
+
+        System.out.println("Somme : " + somme);
+    }
+}
+        </pre>
+
+        <h2>4. Quand utiliser un Stream ou une Collection ?</h2>
+        <ul>
+            <li><span class="highlight">Collections :</span> Utilisez-les pour stocker et manipuler des données sur plusieurs étapes (ajout, suppression, tri, etc.).</li>
+            <li><span class="highlight">Streams :</span> Utilisez-les pour effectuer un traitement en une étape (filtrage, transformation, réduction).</li>
+        </ul>
+
+        <h2>5. Liens utiles</h2>
+        <p>Consultez la <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html" target="_blank">documentation officielle des Streams</a>.</p>
+    </div>
+</body>
+</html>
