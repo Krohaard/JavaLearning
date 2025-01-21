@@ -1,8 +1,11 @@
 package tp011;
 
+import java.lang.reflect.Array;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class Students {
@@ -44,5 +47,17 @@ public class Students {
 	}
 	public String LastStudent() {
 		return kLastStudent.values().toString().replaceAll("[\\[\\]]", "") + " ( " + (kLastStudent.keySet().toString()).replaceAll("[\\[\\]]", "") + " )";
+	}
+	public HashMap<String, Float> ListingStudentAboveAverage(){
+		Collection<Float> kNote;
+		String kName;
+		HashMap<String, Float> kTemp;
+
+		kName = new String();
+		kTemp = (HashMap<String, Float>) kStudents.keySet();
+		kTemp = new HashMap<>();
+		kName = kTemp.keySet().toString();
+		kNote = kTemp.values();
+		return null;
 	}
 }

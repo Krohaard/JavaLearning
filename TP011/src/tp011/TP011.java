@@ -39,6 +39,7 @@ public class TP011 {
 			System.out.printf("Moyenne de la classe : %.2f\n",kNotes.GetAverage());
 			System.out.printf("La note la plus haute : %s\n",kNotes.FirstStudent());
 			System.out.printf("La note la plus basse : %s\n",kNotes.LastStudent());
+			kNotes.ListingStudentAboveAverage();
 		} catch (Exception e) {
 			
 		} finally {
