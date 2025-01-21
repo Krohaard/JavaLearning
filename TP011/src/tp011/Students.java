@@ -49,15 +49,11 @@ public class Students {
 		return kLastStudent.values().toString().replaceAll("[\\[\\]]", "") + " ( " + (kLastStudent.keySet().toString()).replaceAll("[\\[\\]]", "") + " )";
 	}
 	public HashMap<String, Float> ListingStudentAboveAverage(){
-		Collection<Float> kNote;
-		String kName;
 		HashMap<String, Float> kTemp;
-
-		kName = new String();
-		kTemp = (HashMap<String, Float>) kStudents.keySet();
 		kTemp = new HashMap<>();
-		kName = kTemp.keySet().toString();
-		kNote = kTemp.values();
-		return null;
+		for(Entry<String, Float> kElement : kStudents.entrySet()) {
+			if(kElement.getValue()>= kAverage) kTemp.put(kElement.getKey(), kElement.getValue());
+		}
+		return kTemp;
 	}
 }
