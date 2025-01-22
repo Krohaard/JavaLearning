@@ -47,8 +47,8 @@ public class TP011 {
 			for(Entry<String, Float> kElement : kNotes.ListingStudentAboveAverage().entrySet()) {
 				System.out.println(" - " + kElement.getKey() + " (" + kElement.getValue() + ")");
 			}
-		} catch (Exception e) {
-			
+     } catch (InputMismatchException e) {
+                                System.out.println("Erreur : Entrée invalide. Veuillez entrer un nombre.");
 		} finally {
 			kRead.close();
 		}
