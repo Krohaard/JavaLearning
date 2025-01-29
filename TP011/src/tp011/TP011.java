@@ -3,8 +3,7 @@
  */
 package tp011;
 
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Map.Entry;
 
@@ -22,10 +21,8 @@ public class TP011 {
 		String kName;
 		Scanner kRead;
 		Students kNotes;
-		HashMap<String, Float> kTemp;
 		
 		kNotes = new Students();
-		kTemp = new HashMap<>();
 
 		kRead = new Scanner(System.in);
 		try {
@@ -47,8 +44,8 @@ public class TP011 {
 			for(Entry<String, Float> kElement : kNotes.ListingStudentAboveAverage().entrySet()) {
 				System.out.println(" - " + kElement.getKey() + " (" + kElement.getValue() + ")");
 			}
-     } catch (InputMismatchException e) {
-                                System.out.println("Erreur : Entrée invalide. Veuillez entrer un nombre.");
+		} catch (InputMismatchException e) {
+			System.out.println("Erreur : Entrée invalide. Veuillez entrer un nombre.");
 		} finally {
 			kRead.close();
 		}

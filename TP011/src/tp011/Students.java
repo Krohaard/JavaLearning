@@ -1,12 +1,8 @@
 package tp011;
 
-import java.lang.reflect.Array;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map.Entry;
-import java.util.Set;
 
 public class Students {
 	private HashMap<String, Float> kStudents;

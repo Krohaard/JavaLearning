@@ -29,13 +29,56 @@ public class Library {
 		
 	}
 	public void DisplayBookAvailable() {
-		for(Book kElement : this.kBooks) {
-			if(kElement.GetAvailable()) {
-				System.out.println(" - "+kElement.GetTitle()+" ("+kElement.GetAuthor()+", "+kElement.GetPublication()+")");
+		int kk=0;
+		if(!this.EmptyLibray()){
+			for(Book kElement : this.kBooks) {
+				if(kElement.GetAvailable()) {
+					System.out.printf(" - %s (%s, %s)\n",kElement.GetTitle(),kElement.GetAuthor(),kElement.GetPublication());
+					kk++;
+				}
 			}
+			if(kk==0) System.out.println("Désolé tous les livres sont empruntés.");
 		}
 	}
-	public void EmptyLibray() {
-		if(this.kBooks.isEmpty()) System.out.println("La librairie est vide, ajouter un livre pour commencer");
+	private boolean EmptyLibray() {
+		if(this.kBooks.isEmpty()) {
+			System.out.println("La librairie est vide, ajouter un livre pour commencer");
+			return true;
+		}
+		return false;
+	}
+	public void BorrowBook(Scanner kValue) {
+		Integer idBook;
+		if((idBook=this.kSearchBook(kValue)) != null) {
+			System.out.printf("Le livre %s a été emprunté avec succès.\n",this.kBooks.get(idBook).GetTitle());
+			this.kBooks.get(idBook).SetAvailable(false);
+		}
+	}
+	public void ReturnBook(Scanner kValue) {
+		Integer idBook;
+		if((idBook=this.kSearchBook(kValue)) != null) {
+			System.out.println("le livre a été rendu");
+			this.kBooks.get(idBook).SetAvailable(true);
+		}
+	}
+	public void SearchBook(Scanner kValue) {
+		Integer idBook;
+		if((idBook=this.kSearchBook(kValue)) != null) {
+			System.out.println("Le livre existe dans notre libraire :");
+			System.out.printf(" - %s (%s, %s)\n",this.kBooks.get(idBook).GetTitle(),this.kBooks.get(idBook).GetAuthor(),this.kBooks.get(idBook).GetPublication());
+			System.out.printf(" Le livre est actuellement ");
+			if(!this.kBooks.get(idBook).GetAvailable()) System.out.printf("in");
+			System.out.printf("disponible\n");
+		}
+	}
+	private Integer kSearchBook(Scanner kValue) {
+		Integer idBook=null;
+		if(!this.EmptyLibray()) {
+			System.out.printf("Entrez le titre du livre : ");
+			if((idBook = this.kSearchBook.get(kValue.nextLine())) == null) {
+				System.out.println("Désolé, le livre cherché n'existe pas");				
+			}
+		}
+		return idBook;
 	}
 }
