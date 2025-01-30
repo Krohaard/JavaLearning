@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 13 - Gestion d'un Catalogue de Produits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 13 : Gestion d’un Catalogue de Produits</h1>
+        
+        <h2>1. Objectif</h2>
+        <p>Créer un programme permettant de gérer un catalogue de produits, en utilisant des classes et des collections.</p>
+
+        <h2>2. Énoncé</h2>
+        <p>Écrivez un programme en Java qui :</p>
+        <ol>
+            <li>Crée une classe <span class="highlight">Produit</span> avec :
+                <ul>
+                    <li><span class="highlight">id</span> (int)</li>
+                    <li><span class="highlight">nom</span> (String)</li>
+                    <li><span class="highlight">prix</span> (double)</li>
+                    <li><span class="highlight">quantité</span> (int)</li>
+                </ul>
+            </li>
+            <li>Crée une classe <span class="highlight">Catalogue</span> qui contient une liste de produits et permet :
+                <ul>
+                    <li>Ajouter un produit.</li>
+                    <li>Rechercher un produit par son ID.</li>
+                    <li>Afficher la liste des produits disponibles.</li>
+                    <li>Mettre à jour le stock d’un produit.</li>
+                    <li>Supprimer un produit.</li>
+                </ul>
+            </li>
+            <li>Implémente un menu permettant à l’utilisateur de gérer le catalogue.</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+--- MENU ---
+1. Ajouter un produit
+2. Rechercher un produit
+3. Afficher tous les produits
+4. Mettre à jour la quantité d'un produit
+5. Supprimer un produit
+6. Quitter
+
+Choix : 1
+Entrez l'ID du produit : 101
+Entrez le nom du produit : Clavier
+Entrez le prix : 29.99
+Entrez la quantité : 50
+
+Choix : 3
+Produits disponibles :
+- [101] Clavier - 29.99€ (Stock : 50)
+
+Choix : 4
+Entrez l'ID du produit à mettre à jour : 101
+Nouvelle quantité : 40
+Stock mis à jour avec succès.
+
+Choix : 5
+Entrez l'ID du produit à supprimer : 101
+Produit supprimé avec succès.
+
+Choix : 3
+Aucun produit disponible.
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilisez une <span class="highlight">ArrayList</span> pour stocker les produits.</li>
+            <li>Recherchez les produits avec un <code>Stream</code> pour simplifier la logique.</li>
+            <li>Vérifiez si l’ID du produit existe avant d’effectuer une opération.</li>
+        </ul>
+
+        <h2>5. Concepts abordés</h2>
+        <ul>
+            <li>Utilisation des classes pour structurer les données.</li>
+            <li>Utilisation des collections pour stocker et manipuler les produits.</li>
+            <li>Gestion des entrées utilisateur et validation.</li>
+        </ul>
+
+        <h2>6. Temps estimé</h2>
+        <p>Un développeur expert mettrait environ 40 à 60 minutes pour résoudre cet exercice.</p>
+    </div>
+</body>
+</html>
