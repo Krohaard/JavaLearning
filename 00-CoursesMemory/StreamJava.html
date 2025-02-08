@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours sur les Streams en Java</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #bb86fc;
+        }
+        code {
+            background-color: #2e2e2e;
+            padding: 2px 4px;
+            border-radius: 4px;
+            color: #d1d1d1;
+        }
+        pre {
+            background-color: #2e2e2e;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cours sur les Streams en Java</h1>
+    <p>Les Streams en Java sont une fonctionnalité puissante introduite dans Java 8 qui permet de traiter des collections de données de manière déclarative. Ils permettent de réaliser des opérations complexes de manière concise et lisible.</p>
+
+    <h2>Introduction aux Streams</h2>
+    <p>Un Stream en Java est une séquence d'éléments qui supporte différentes opérations pour traiter ces éléments. Les Streams ne stockent pas les données, mais les traitent à la volée. Voici quelques concepts clés :</p>
+    <ul>
+        <li><strong>Source :</strong> La source d'un Stream peut être une collection, un tableau, un générateur, etc.</li>
+        <li><strong>Opérations intermédiaires :</strong> Ces opérations sont paresseuses et renvoient un nouveau Stream. Exemples : <code>filter</code>, <code>map</code>, <code>sorted</code>.</li>
+        <li><strong>Opérations terminales :</strong> Ces opérations déclenchent le traitement et renvoient un résultat ou un effet de bord. Exemples : <code>forEach</code>, <code>collect</code>, <code>reduce</code>.</li>
+    </ul>
+
+    <h2>Exemples de base</h2>
+    <h3>Création d'un Stream</h3>
+    <p>Pour créer un Stream à partir d'une collection, vous pouvez utiliser la méthode <code>stream()</code> :</p>
+    <pre><code>List<String> maListe = Arrays.asList("a", "b", "c");
+Stream<String> monStream = maListe.stream();</code></pre>
+
+    <h3>Filtrage d'un Stream</h3>
+    <p>Le filtrage permet de sélectionner les éléments qui répondent à un certain critère. Par exemple, pour filtrer les chaînes qui commencent par "a" :</p>
+    <pre><code>List<String> result = maListe.stream()
+    .filter(s -> s.startsWith("a"))
+    .collect(Collectors.toList());</code></pre>
+
+    <h3>Transformation d'un Stream</h3>
+    <p>La transformation permet de modifier les éléments du Stream. Par exemple, pour convertir toutes les chaînes en majuscules :</p>
+    <pre><code>List<String> result = maListe.stream()
+    .map(String::toUpperCase)
+    .collect(Collectors.toList());</code></pre>
+
+    <h2>Exemples avancés</h2>
+    <h3>Réduction d'un Stream</h3>
+    <p>La réduction permet de combiner les éléments du Stream pour produire un seul résultat. Par exemple, pour calculer la somme d'une liste de nombres :</p>
+    <pre><code>int sum = Arrays.asList(1, 2, 3, 4, 5).stream()
+    .reduce(0, Integer::sum);</code></pre>
+
+    <h3>Combinaison d'opérations</h3>
+    <p>Vous pouvez combiner plusieurs opérations intermédiaires pour réaliser des traitements complexes. Par exemple :</p>
+    <pre><code>List<String> result = maListe.stream()
+    .filter(s -> s.length() > 1)
+    .map(String::toUpperCase)
+    .sorted()
+    .collect(Collectors.toList());</code></pre>
+
+    <h2>Théorie approfondie</h2>
+    <p>Les Streams en Java permettent de travailler de manière déclarative, ce qui signifie que vous décrivez ce que vous voulez faire, plutôt que de décrire comment le faire. Cela conduit à un code plus lisible et maintenable. Voici quelques points théoriques importants :</p>
+    <ul>
+        <li><strong>Immutabilité :</strong> Les Streams ne modifient pas la source des données.</li>
+        <li><strong>Paresse :</strong> Les opérations intermédiaires sont paresseuses et ne sont exécutées que lorsque l'opération terminale est invoquée.</li>
+        <li><strong>Parallélisme :</strong> Les Streams peuvent être parallélisés pour tirer parti des processeurs multi-cœurs.</li>
+    </ul>
+
+    <h2>Gestion des exceptions</h2>
+    <p>La gestion des exceptions dans les Streams peut être délicate car les lambdas ne permettent pas de lancer des exceptions vérifiées. Voici quelques approches pour gérer les exceptions :</p>
+    <h3>Utilisation de try-catch dans les lambdas</h3>
+    <pre><code>List<String> result = maListe.stream()
+    .map(s -> {
+        try {
+            return someMethodThatThrowsException(s);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    })
+    .collect(Collectors.toList());</code></pre>
+
+    <h3>Création d'une méthode utilitaire</h3>
+    <p>Vous pouvez créer une méthode utilitaire pour gérer les exceptions :</p>
+    <pre><code>public static <T, R> Function<T, R> handleException(FunctionWithException<T, R> fe) {
+    return i -> {
+        try {
+            return fe.apply(i);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    };
+}
+
+@FunctionalInterface
+public interface FunctionWithException<T, R> {
+    R apply(T t) throws Exception;
+}</code></pre>
+    <p>Utilisation de la méthode utilitaire :</p>
+    <pre><code>List<String> result = maListe.stream()
+    .map(handleException(s -> someMethodThatThrowsException(s)))
+    .collect(Collectors.toList());</code></pre>
+
+    <h2>Exemples très complexes</h2>
+    <h3>Utilisation de Streams parallèles</h3>
+    <p>Les Streams parallèles permettent de traiter les éléments en parallèle pour améliorer les performances :</p>
+    <pre><code>List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List<Integer> result = numbers.parallelStream()
+    .filter(n -> n % 2 == 0)
+    .map(n -> n * n)
+    .collect(Collectors.toList());</code></pre>
+
+    <h3>Combinaison de plusieurs Streams</h3>
+    <p>Vous pouvez combiner plusieurs Streams en un seul :</p>
+    <pre><code>Stream<String> stream1 = Stream.of("a", "b", "c");
+Stream<String> stream2 = Stream.of("d", "e", "f");
+Stream<String> combinedStream = Stream.concat(stream1, stream2);
+List<String> result = combinedStream.collect(Collectors.toList());</code></pre>
+
+    <h2>Conclusion</h2>
+    <p>Les Streams en Java sont un outil puissant pour traiter des collections de données de manière efficace et lisible. En comprenant les concepts de base et en pratiquant avec des exemples, vous pouvez maîtriser cette fonctionnalité et l'utiliser pour écrire du code Java plus propre et plus performant.</p>
+</body>
+</html>
