@@ -13,7 +13,6 @@ public class TP002 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		float kNumber1;
 		float kNumber2;
 		float kResult;

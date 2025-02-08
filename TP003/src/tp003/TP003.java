@@ -14,7 +14,6 @@ public class TP003 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int kk;
 		int kTotalNumber;
 		float[] kArrayInput;
@@ -29,12 +28,12 @@ public class TP003 {
 				System.out.printf("Entrez le nombre %d :", kk + 1);
 				kArrayInput[kk]=kRead.nextFloat();
 			}
-			kRead.close();
 			System.out.printf("Somme : %.2f\n", kSumArray(kArrayInput));
 			System.out.printf("Moyenne : %.2f\n", kMeanArray(kArrayInput));
 			System.out.printf("Plus grand nombre : %.2f\n", kMaxArray(kArrayInput));
 			System.out.printf("Plus petit nombre : %.2f\n", kMinArray(kArrayInput));
 		}
+		kRead.close();
 	}
 	public static float kSumArray(float kData[]) {
 		int kk;

@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class TP005 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int kk;
 		Scanner kRead = new Scanner(System.in);
 		System.out.printf("Entrez un nombre positif :");

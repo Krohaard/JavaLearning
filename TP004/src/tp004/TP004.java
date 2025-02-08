@@ -14,7 +14,6 @@ public class TP004 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String kValue;
 		Scanner kRead = new Scanner(System.in);
 		System.out.println("Bonjour!! Écris moi quelque chose :");

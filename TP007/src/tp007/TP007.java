@@ -3,15 +3,12 @@ package tp007;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.io.File;
-import java.io.FileReader;
 
 public class TP007 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int kArraySelected;
 		String kQuestion;
 		String[] kArrayData;
@@ -50,7 +47,6 @@ public class TP007 {
 				System.out.println("--------------------");
 				kReadDataFile(kNameFile);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				System.out.println("Erreur lors de la manipulation du fichier : " + e.getMessage());
 			}
 //			kDisplayResult(kArrayData);

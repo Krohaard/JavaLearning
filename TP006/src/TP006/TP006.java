@@ -7,7 +7,6 @@ public class TP006 {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int[] kRandomList;
 		int kSizeArray;
 		int kUbound;

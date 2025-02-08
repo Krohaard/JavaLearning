@@ -16,9 +16,6 @@ public class TP001 {
 	 */
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-
 		float kSalaire;
 		int kAge;
 		String kName;
