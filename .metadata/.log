@@ -51,3 +51,16 @@ java.io.FileNotFoundException: /home/lionel/.eclipse/org.eclipse.oomph.setup/cac
 	at org.eclipse.oomph.internal.ui.EarlyStart.run(EarlyStart.java:119)
 	at org.eclipse.oomph.internal.ui.EarlyStart$1.run(EarlyStart.java:98)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2025-02-08 19:12:04.833 -----------------------------------------------
+eclipse.buildId=4.34.0.20241128-0756
+java.version=21.0.5
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-02-08 19:12:10.025
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-02-08 19:12:19.567
+!MESSAGE Logback config file: /home/lionel/Documents/JavaLearning/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.0.20241001-1350.xml
