@@ -1,6 +1,7 @@
 package tp013;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -26,12 +27,15 @@ public class Catalog {
 		this.kProducts.add(kProduct);
 	}
 	public void SearchProduct(Scanner kRead) {
-		Integer kID;
-		kID = 0;
+		String kSearch;
 		if(!kCheckEmptyProducts()) {
-			while(kID<1 && kID>3) {
-				kID = (Integer) KFunc.kQuestion(kRead,"Veuillez taper l'ID du produit :","integer");
-			}
+				kSearch = (String) KFunc.kQuestion(kRead,"Veuillez taper un nom du produit chercher :","string");
+				List<Product> kFilter = this.kProducts.stream().filter(kElement -> kElement.getName().toString().toLowerCase().contains(kSearch.toLowerCase())).collect(Collectors.toList());
+				if(!kFilter.isEmpty()) {
+					kFilter.forEach(kElement -> System.out.printf(" - [%d] %s - %.2f€ (Stock : %d)\n", kElement.getID(),kElement.getName(),kElement.getPrice(),kElement.getQty()));
+				} else {
+					System.out.println("aucun élément correspond à votre recherche.");
+				}
 		}
 	}
 	public void ShowProducts() {
@@ -75,7 +79,7 @@ public class Catalog {
 	}
 	private int kGenerateID() {
 		if (this.kProducts.isEmpty()) return 1;
-		return kProducts.getLast().getID()+1;
+		return this.kProducts.get(this.kProducts.size()-1).getID()+1;
 	}
 	private boolean kCheckProductID(int kId) {
 		if(this.kProducts.stream().filter(kElement -> kElement.getID() == kId).count()>0) return true;

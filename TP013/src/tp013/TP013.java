@@ -35,6 +35,7 @@ public class TP013 {
 						break;
 					case 2: //search product
 						System.out.printf("Choix %d sélectionner\n", kChooseMenu);
+						kMagazin.SearchProduct(kRead);
 						break;
 					case 3: //show all products
 						System.out.printf("Choix %d sélectionner\n", kChooseMenu);
