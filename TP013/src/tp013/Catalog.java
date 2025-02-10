@@ -47,17 +47,11 @@ public class Catalog {
 	}
 	public void DeletProduct(Scanner kRead) {
 		int kID;
-		int kk;
 		if(!kCheckEmptyProducts()) {
 			kID = (int) KFunc.kQuestion(kRead,"Veuillez taper l'ID du produit :","integer");
 			if(kCheckProductID(kID)) {
-				for(kk=0;kk<this.kProducts.size();kk++) {
-					if(this.kProducts.get(kk).getID()==kID) {
-						this.kProducts.remove(kk);
-						System.out.println("Référence produit supprimé.");
-						continue;
-					}
-				}
+				this.kProducts.removeIf(kElement -> kElement.getID() == kID);
+				System.out.println("Référence produit supprimé.");
 			}
 		}
 	}
@@ -70,16 +64,15 @@ public class Catalog {
 				for(kk=0;kk<this.kProducts.size();kk++) {
 					if(this.kProducts.get(kk).getID()==kID) {
 						this.kProducts.get(kk).setQty((int) KFunc.kQuestion(kRead,"Veuillez taper la nouvelle quantité :","integer"));;
-						System.out.println("Référence produit supprimé.");
-						continue;
+						System.out.println("Quantité mise à jour avec succés.");
+						return;
 					}
 				}
 			}
 		}
 	}
 	private int kGenerateID() {
-		if (this.kProducts.isEmpty()) return 1;
-		return this.kProducts.get(this.kProducts.size()-1).getID()+1;
+		return this.kProducts.stream().mapToInt(Product::getID).max().orElse(0)+1;
 	}
 	private boolean kCheckProductID(int kId) {
 		if(this.kProducts.stream().filter(kElement -> kElement.getID() == kId).count()>0) return true;
