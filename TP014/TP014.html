@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 14 - Gestion d’un Système de Commandes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h2, h3 {
+            color: #ffa726;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        pre {
+            background: #212121;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffa726;
+            overflow-x: auto;
+            color: #cfd8dc;
+        }
+        .highlight {
+            color: #ffa726;
+            font-weight: bold;
+        }
+        a {
+            color: #64b5f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercice 14 : Gestion d’un Système de Commandes</h1>
+        
+        <h2>1. Objectif</h2>
+        <p>Créer un programme permettant de gérer un système de commandes en ligne, en utilisant des classes et des collections.</p>
+
+        <h2>2. Énoncé</h2>
+        <p>Écrivez un programme en Java qui :</p>
+        <ol>
+            <li>Crée une classe <span class="highlight">Produit</span> avec :
+                <ul>
+                    <li><span class="highlight">id</span> (int)</li>
+                    <li><span class="highlight">nom</span> (String)</li>
+                    <li><span class="highlight">prix</span> (double)</li>
+                    <li><span class="highlight">stock</span> (int)</li>
+                </ul>
+            </li>
+            <li>Crée une classe <span class="highlight">Commande</span> avec :
+                <ul>
+                    <li><span class="highlight">id</span> (int)</li>
+                    <li><span class="highlight">liste de produits</span> (Map&lt;Produit, Integer&gt; où la clé est le produit et la valeur est la quantité).</li>
+                    <li><span class="highlight">statut</span> (String) : "En attente", "Expédiée", "Livrée".</li>
+                    <li>Méthodes pour ajouter un produit, calculer le total et modifier le statut.</li>
+                </ul>
+            </li>
+            <li>Crée une classe <span class="highlight">GestionCommandes</span> qui permet :
+                <ul>
+                    <li>Créer une commande.</li>
+                    <li>Ajouter des produits à une commande.</li>
+                    <li>Modifier le statut d'une commande.</li>
+                    <li>Afficher toutes les commandes.</li>
+                </ul>
+            </li>
+            <li>Implémente un menu permettant à l’utilisateur de gérer le système de commandes.</li>
+        </ol>
+
+        <h2>3. Exemple attendu</h2>
+        <pre>
+--- MENU ---
+1. Ajouter un produit
+2. Créer une commande
+3. Ajouter un produit à une commande
+4. Afficher toutes les commandes
+5. Modifier le statut d'une commande
+6. Quitter
+
+Choix : 1
+Entrez l'ID du produit : 101
+Entrez le nom du produit : Clavier
+Entrez le prix : 29.99
+Entrez le stock : 50
+
+Choix : 2
+Nouvelle commande créée avec ID 1.
+
+Choix : 3
+Entrez l'ID de la commande : 1
+Entrez l'ID du produit à ajouter : 101
+Entrez la quantité : 2
+Produit ajouté à la commande 1.
+
+Choix : 4
+Commandes enregistrées :
+- Commande #1 : 2 x Clavier (En attente)
+
+Choix : 5
+Entrez l'ID de la commande : 1
+Nouveau statut (En attente, Expédiée, Livrée) : Expédiée
+Statut de la commande mis à jour avec succès.
+
+Choix : 4
+Commandes enregistrées :
+- Commande #1 : 2 x Clavier (Expédiée)
+        </pre>
+
+        <h2>4. Conseils techniques</h2>
+        <ul>
+            <li>Utilisez une <span class="highlight">ArrayList</span> pour stocker les commandes.</li>
+            <li>Stockez les produits d’une commande avec une <span class="highlight">HashMap</span> (clé : produit, valeur : quantité).</li>
+            <li>Assurez-vous que les stocks sont mis à jour lors d’une commande.</li>
+        </ul>
+
+        <h2>5. Concepts abordés</h2>
+        <ul>
+            <li>Utilisation des collections pour gérer les produits et commandes.</li>
+            <li>Gestion des interactions utilisateur avec un menu.</li>
+            <li>Encapsulation et manipulation des objets avec des méthodes.</li>
+        </ul>
+
+        <h2>6. Temps estimé</h2>
+        <p>Un développeur expert mettrait environ 1h à 1h30 pour résoudre cet exercice.</p>
+    </div>
+</body>
+</html>
+
