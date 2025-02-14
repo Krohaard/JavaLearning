@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours sur les Regex en Java</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #bb86fc;
+        }
+        code {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #333333;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        a {
+            color: #bb86fc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cours sur les Regex en Java</h1>
+    <p>Bienvenue dans ce cours complet sur les expressions régulières en Java. Nous allons explorer en détail la théorie et la pratique des regex, avec de nombreux exemples pour illustrer chaque concept.</p>
+
+    <h2>1. Introduction aux expressions régulières</h2>
+    <p>Les expressions régulières sont des motifs utilisés pour correspondre à des ensembles de chaînes de caractères dans du texte. Elles sont extrêmement puissantes pour la recherche, la validation et la manipulation de texte.</p>
+
+    <h2>2. Syntaxe des regex en Java</h2>
+    <p>La syntaxe des regex en Java est basée sur la norme Perl. Voici quelques éléments de base :</p>
+    <ul>
+        <li><code>.</code> : Correspond à n'importe quel caractère sauf une nouvelle ligne.</li>
+        <li><code>*</code> : Correspond à zéro ou plusieurs occurrences du caractère précédent.</li>
+        <li><code>+</code> : Correspond à une ou plusieurs occurrences du caractère précédent.</li>
+        <li><code>?</code> : Correspond à zéro ou une occurrence du caractère précédent.</li>
+        <li><code>\\d</code> : Correspond à un chiffre.</li>
+        <li><code>\\w</code> : Correspond à un caractère alphanumérique.</li>
+        <li><code>\\s</code> : Correspond à un espace blanc.</li>
+    </ul>
+
+    <h2>3. Utilisation des classes Java pour les regex</h2>
+    <p>Java fournit les classes <code>Pattern</code> et <code>Matcher</code> pour travailler avec les expressions régulières. Voici un exemple de base :</p>
+    <pre><code>import java.util.regex.*;
+
+public class RegexExample {
+    public static void main(String[] args) {
+        String text = "Voici un exemple de texte avec des chiffres 123 et des lettres ABC.";
+        String patternString = "\\d+";
+
+        Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            System.out.println("Correspondance trouvée : " + matcher.group());
+        }
+    }
+}</code></pre>
+
+    <h2>4. Exemples pratiques</h2>
+    <p>Voici quelques exemples pratiques d'utilisation des regex en Java :</p>
+    <h3>Validation d'une adresse email</h3>
+    <pre><code>import java.util.regex.*;
+
+public class EmailValidation {
+    public static void main(String[] args) {
+        String email = "exemple@domaine.com";
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+
+        Pattern pattern = Pattern.compile(emailPattern);
+        Matcher matcher = pattern.matcher(email);
+
+        if (matcher.matches()) {
+            System.out.println("Adresse email valide.");
+        } else {
+            System.out.println("Adresse email invalide.");
+        }
+    }
+}</code></pre>
+
+    <h3>Extraction de numéros de téléphone</h3>
+    <pre><code>import java.util.regex.*;
+
+public class PhoneNumberExtraction {
+    public static void main(String[] args) {
+        String text = "Contactez-nous au 01-23-45-67-89 ou au 98-76-54-32-10.";
+        String phonePattern = "\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{2}";
+
+        Pattern pattern = Pattern.compile(phonePattern);
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            System.out.println("Numéro de téléphone trouvé : " + matcher.group());
+        }
+    }
+}</code></pre>
+
+    <h2>5. Exercices et solutions</h2>
+    <p>Pour mettre en pratique ce que vous avez appris, essayez de résoudre les exercices suivants :</p>
+    <h3>Exercice 1 : Validation de code postal</h3>
+    <p>Écrivez une regex pour valider un code postal français (5 chiffres).</p>
+    <pre><code>import java.util.regex.*;
+
+public class PostalCodeValidation {
+    public static void main(String[] args) {
+        String postalCode = "75001";
+        String postalCodePattern = "^\\d{5}$";
+
+        Pattern pattern = Pattern.compile(postalCodePattern);
+        Matcher matcher = pattern.matcher(postalCode);
+
+        if (matcher.matches()) {
+            System.out.println("Code postal valide.");
+        } else {
+            System.out.println("Code postal invalide.");
+        }
+    }
+}</code></pre>
+
+    <h3>Exercice 2 : Extraction de dates</h3>
+    <p>Écrivez une regex pour extraire les dates au format JJ/MM/AAAA d'un texte.</p>
+    <pre><code>import java.util.regex.*;
+
+public class DateExtraction {
+    public static void main(String[] args) {
+        String text = "Les événements auront lieu les 12/05/2023 et 23/06/2024.";
+        String datePattern = "\\d{2}/\\d{2}/\\d{4}";
+
+        Pattern pattern = Pattern.compile(datePattern);
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            System.out.println("Date trouvée : " + matcher.group());
+        }
+    }
+}</code></pre>
+
+</body>
+</html>

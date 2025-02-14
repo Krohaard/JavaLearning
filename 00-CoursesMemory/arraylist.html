@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #bb86fc;
+        }
+        code {
+            background-color: #333;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #ff79c6;
+        }
+        a {
+            color: #03dac6;
+        }
+        .example {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-left: 3px solid #bb86fc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Section 1 : Les Listes en Java -->
+<h1>Les Listes en Java</h1>
+
+<h2>Introduction</h2>
+<p>Une <code>List</code> en Java est une collection ordonnée qui permet des éléments dupliqués. Elle fait partie du framework <code>java.util</code> et étend l'interface <code>Collection</code>.</p>
+
+<h2>Caractéristiques</h2>
+<ul>
+    <li>Accès aux éléments par index</li>
+    <li>Permet les doublons</li>
+    <li>Implémentations courantes : <code>ArrayList</code>, <code>LinkedList</code></li>
+</ul>
+
+<div class="example">
+    <h3>Exemple de base avec List</h3>
+    <pre><code>import java.util.ArrayList;
+import java.util.List;
+
+public class ExempleList {
+    public static void main(String[] args) {
+        List&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+        fruits.add("Pomme");
+        fruits.add("Banane");
+        fruits.add(1, "Orange"); // Ajout à un index spécifique
+        
+        System.out.println("Liste de fruits : " + fruits);
+        System.out.println("Élément à l'index 2 : " + fruits.get(2));
+    }
+}</code></pre>
+    <p>Résultat :</p>
+    <pre>Liste de fruits : [Pomme, Orange, Banane]
+Élément à l'index 2 : Banane</pre>
+</div>
+
+<!-- Section 2 : ArrayList -->
+<h1>ArrayList</h1>
+
+<h2>Introduction</h2>
+<p>La classe <code>ArrayList</code> est une implémentation de tableau redimensionnable de l'interface <code>List</code>.</p>
+
+<h2>Caractéristiques</h2>
+<ul>
+    <li>Accès rapide aux éléments par index (O(1))</li>
+    <li>Insertion/suppression lente au milieu (O(n))</li>
+    <li>Non synchronisé (pas thread-safe)</li>
+</ul>
+
+<div class="example">
+    <h3>Exemple avancé avec ArrayList</h3>
+    <pre><code>import java.util.ArrayList;
+import java.util.Collections;
+
+public class ExempleArrayList {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; nombres = new ArrayList&lt;&gt;();
+        nombres.add(5);
+        nombres.add(2);
+        nombres.add(8);
+        
+        Collections.sort(nombres); // Tri de la liste
+        nombres.removeIf(n -> n % 2 == 0); // Suppression des nombres pairs
+        
+        System.out.println("Liste filtrée : " + nombres);
+    }
+}</code></pre>
+    <p>Résultat :</p>
+    <pre>Liste filtrée : [5]</pre>
+</div>
+
+<!-- Section 3 : Les Streams -->
+<h1>Les Streams en Java</h1>
+
+<h2>Introduction</h2>
+<p>Les <code>Stream</code> (introduits dans Java 8) permettent des opérations de traitement de données de manière déclarative.</p>
+
+<h2>Caractéristiques</h2>
+<ul>
+    <li>Opérations en pipeline</li>
+    <li>Ne modifie pas la source de données</li>
+    <li>Peut être parallélisé</li>
+</ul>
+
+<div class="example">
+    <h3>Exemple de base avec Stream</h3>
+    <pre><code>import java.util.List;
+import java.util.stream.Collectors;
+
+public class ExempleStream {
+    public static void main(String[] args) {
+        List&lt;String&gt; mots = List.of("Java", "Stream", "API", "Collections");
+        
+        List&lt;String&gt; resultat = mots.stream()
+            .filter(mot -> mot.length() > 4)
+            .map(String::toUpperCase)
+            .collect(Collectors.toList());
+            
+        System.out.println("Résultat : " + resultat);
+    }
+}</code></pre>
+    <p>Résultat :</p>
+    <pre>Résultat : [STREAM, COLLECTIONS]</pre>
+</div>
+
+<div class="example">
+    <h3>Exemple complexe avec Stream</h3>
+    <pre><code>import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+
+public class StreamComplexe {
+    public static void main(String[] args) {
+        List&lt;Integer&gt; nombres = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        
+        IntSummaryStatistics stats = nombres.stream()
+            .filter(n -> n % 2 == 0)
+            .mapToInt(n -> n * 2)
+            .summaryStatistics();
+            
+        System.out.println("Moyenne : " + stats.getAverage());
+        System.out.println("Max : " + stats.getMax());
+    }
+}</code></pre>
+    <p>Résultat :</p>
+    <pre>Moyenne : 10.0
+Max : 16</pre>
+</div>
+
+<h2>Conclusion</h2>
+<p>Ces trois concepts sont fondamentaux en Java :</p>
+<ul>
+    <li><code>List</code> : Interface de base pour les collections ordonnées</li>
+    <li><code>ArrayList</code> : Implémentation optimisée pour l'accès aléatoire</li>
+    <li><code>Stream</code> : API moderne pour le traitement déclaratif des données</li>
+</ul>
+
+</body>
+</html>

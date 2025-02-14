@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #bb86fc;
+        }
+        code {
+            background-color: #333;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #ff79c6;
+        }
+        a {
+            color: #03dac6;
+        }
+        .example {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-left: 3px solid #bb86fc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Les List en Java</h1>
+
+<h2>Introduction</h2>
+<p>En Java, une <code>List</code> est une interface qui représente une collection ordonnée d'éléments. Elle permet de stocker des éléments de manière séquentielle et offre des méthodes pour accéder, ajouter, supprimer et manipuler ces éléments. Les implémentations courantes de <code>List</code> sont <code>ArrayList</code>, <code>LinkedList</code>, et <code>Vector</code>.</p>
+
+<h2>Caractéristiques des List</h2>
+<ul>
+    <li><strong>Ordonnée</strong> : Les éléments sont stockés dans un ordre spécifique.</li>
+    <li><strong>Accès par index</strong> : Vous pouvez accéder aux éléments par leur position (index).</li>
+    <li><strong>Autorise les doublons</strong> : Une <code>List</code> peut contenir plusieurs fois le même élément.</li>
+    <li><strong>Redimensionnable</strong> : La taille d'une <code>List</code> peut changer dynamiquement.</li>
+</ul>
+
+<h2>Méthodes principales de l'interface List</h2>
+<p>Voici quelques méthodes couramment utilisées de l'interface <code>List</code> :</p>
+<ul>
+    <li><code>add(E e)</code> : Ajoute un élément à la fin de la liste.</li>
+    <li><code>add(int index, E e)</code> : Ajoute un élément à un index spécifique.</li>
+    <li><code>get(int index)</code> : Retourne l'élément à l'index spécifié.</li>
+    <li><code>remove(int index)</code> : Supprime l'élément à l'index spécifié.</li>
+    <li><code>size()</code> : Retourne le nombre d'éléments dans la liste.</li>
+    <li><code>contains(Object o)</code> : Vérifie si la liste contient un élément spécifique.</li>
+    <li><code>clear()</code> : Supprime tous les éléments de la liste.</li>
+</ul>
+
+<h2>Exemples d'utilisation</h2>
+
+<h3>1. Création et manipulation d'une List</h3>
+<div class="example">
+    <p>Voici un exemple simple d'utilisation d'une <code>List</code> avec <code>ArrayList</code> :</p>
+    <pre><code>import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Création d'une List de type ArrayList
+        List&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+
+        // Ajout d'éléments
+        fruits.add("Pomme");
+        fruits.add("Banane");
+        fruits.add("Cerise");
+
+        // Accès aux éléments
+        System.out.println("Fruit à l'index 1 : " + fruits.get(1)); // Banane
+
+        // Suppression d'un élément
+        fruits.remove("Banane");
+
+        // Affichage de la liste
+        System.out.println("Liste des fruits : " + fruits); // [Pomme, Cerise]
+    }
+}</code></pre>
+    <p>Ce code affichera :</p>
+    <pre>Fruit à l'index 1 : Banane
+Liste des fruits : [Pomme, Cerise]</pre>
+</div>
+
+<h3>2. Parcourir une List avec une boucle for</h3>
+<div class="example">
+    <p>Vous pouvez parcourir une <code>List</code> en utilisant une boucle <code>for</code> :</p>
+    <pre><code>import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+        fruits.add("Pomme");
+        fruits.add("Banane");
+        fruits.add("Cerise");
+
+        // Parcours avec une boucle for
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println("Fruit " + i + " : " + fruits.get(i));
+        }
+    }
+}</code></pre>
+    <p>Ce code affichera :</p>
+    <pre>Fruit 0 : Pomme
+Fruit 1 : Banane
+Fruit 2 : Cerise</pre>
+</div>
+
+<h3>3. Utilisation de la méthode contains()</h3>
+<div class="example">
+    <p>La méthode <code>contains()</code> permet de vérifier si un élément est présent dans la liste :</p>
+    <pre><code>import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+        fruits.add("Pomme");
+        fruits.add("Banane");
+
+        // Vérification de la présence d'un élément
+        boolean contientPomme = fruits.contains("Pomme");
+        System.out.println("Contient Pomme ? " + contientPomme); // true
+    }
+}</code></pre>
+    <p>Ce code affichera :</p>
+    <pre>Contient Pomme ? true</pre>
+</div>
+
+<h2>Conclusion</h2>
+<p>Les <code>List</code> en Java sont des collections ordonnées et flexibles qui permettent de stocker et de manipuler des éléments de manière efficace. Elles sont largement utilisées dans les programmes Java pour gérer des ensembles de données dynamiques. En maîtrisant les méthodes de base de l'interface <code>List</code>, vous pourrez manipuler des collections de données avec aisance.</p>
+
+</body>
+</html>

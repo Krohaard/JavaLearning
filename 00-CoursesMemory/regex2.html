@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours sur les Regex en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #c9c9c9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #ff6f61;
+        }
+        code {
+            background-color: #2e2e2e;
+            color: #66d9ef;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #2e2e2e;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .example {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cours sur les Regex en Java</h1>
+
+<h2>Introduction aux Regex</h2>
+<p>Les expressions régulières (regex) sont des séquences de caractères formant un motif de recherche. Elles sont utilisées pour la recherche, le remplacement et la validation de chaînes de caractères.</p>
+
+<h2>Syntaxe de Base</h2>
+<p>Voici quelques éléments de base de la syntaxe des regex :</p>
+<ul>
+    <li><code>.</code> : Correspond à n'importe quel caractère sauf un saut de ligne.</li>
+    <li><code>^</code> : Correspond au début d'une ligne.</li>
+    <li><code>$</code> : Correspond à la fin d'une ligne.</li>
+    <li><code>*</code> : Correspond à 0 ou plusieurs occurrences du caractère précédent.</li>
+    <li><code>+</code> : Correspond à 1 ou plusieurs occurrences du caractère précédent.</li>
+    <li><code>?</code> : Correspond à 0 ou 1 occurrence du caractère précédent.</li>
+    <li><code>[]</code> : Correspond à un caractère parmi ceux entre crochets.</li>
+    <li><code>|</code> : Correspond à l'un ou l'autre des motifs séparés par le pipe.</li>
+    <li><code>\</code> : Échappe un caractère spécial.</li>
+</ul>
+
+<h2>Chiffres et Caractères Spéciaux</h2>
+<p>Les regex permettent également de travailler avec des chiffres et des caractères spéciaux :</p>
+<ul>
+    <li><code>\d</code> : Correspond à n'importe quel chiffre (équivalent à <code>[0-9]</code>).</li>
+    <li><code>\D</code> : Correspond à tout caractère qui n'est pas un chiffre.</li>
+    <li><code>\w</code> : Correspond à n'importe quel caractère alphanumérique ou souligné (équivalent à <code>[a-zA-Z0-9_]</code>).</li>
+    <li><code>\W</code> : Correspond à tout caractère qui n'est pas alphanumérique ou souligné.</li>
+    <li><code>\s</code> : Correspond à n'importe quel caractère d'espacement (espace, tabulation, etc.).</li>
+    <li><code>\S</code> : Correspond à tout caractère qui n'est pas un espace.</li>
+    <li><code>\b</code> : Correspond à une limite de mot.</li>
+    <li><code>\B</code> : Correspond à une position qui n'est pas une limite de mot.</li>
+</ul>
+
+<h2>Utilisation des Regex en Java</h2>
+<p>En Java, les regex sont utilisées via les classes <code>Pattern</code> et <code>Matcher</code> du package <code>java.util.regex</code>.</p>
+
+<h3>Exemple 1 : Recherche Simple</h3>
+<div class="example">
+    <pre>
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class RegexExample {
+    public static void main(String[] args) {
+        String text = "Bonjour, le monde!";
+        String regex = "monde";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            System.out.println("Motif trouvé!");
+        } else {
+            System.out.println("Motif non trouvé.");
+        }
+    }
+}
+    </pre>
+    <p>Dans cet exemple, nous recherchons simplement le mot "monde" dans la chaîne "Bonjour, le monde!". La méthode <code>find()</code> de <code>Matcher</code> est utilisée pour vérifier si le motif est présent dans le texte.</p>
+</div>
+
+<h3>Exemple 2 : Utilisation des Groupes</h3>
+<div class="example">
+    <pre>
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class RegexGroupsExample {
+    public static void main(String[] args) {
+        String text = "Date: 2023-10-01";
+        String regex = "Date: (\\d{4})-(\\d{2})-(\\d{2})";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        if (matcher.find()) {
+            System.out.println("Année: " + matcher.group(1));
+            System.out.println("Mois: " + matcher.group(2));
+            System.out.println("Jour: " + matcher.group(3));
+        }
+    }
+}
+    </pre>
+    <p>Ici, nous utilisons des groupes pour extraire l'année, le mois et le jour d'une date. Les parenthèses dans le motif <code>(\\d{4})-(\\d{2})-(\\d{2})</code> définissent trois groupes capturants. La méthode <code>group(int)</code> de <code>Matcher</code> permet de récupérer le texte correspondant à chaque groupe.</p>
+</div>
+
+<h3>Exemple 3 : Remplacement avec Regex</h3>
+<div class="example">
+    <pre>
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class RegexReplaceExample {
+    public static void main(String[] args) {
+        String text = "Bonjour, le monde!";
+        String regex = "monde";
+        String replacement = "Java";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        String result = matcher.replaceAll(replacement);
+        System.out.println(result); // Affiche: Bonjour, le Java!
+    }
+}
+    </pre>
+    <p>Cet exemple montre comment remplacer toutes les occurrences d'un motif par une autre chaîne. La méthode <code>replaceAll()</code> de <code>Matcher</code> est utilisée pour remplacer "monde" par "Java" dans le texte.</p>
+</div>
+
+<h3>Exemple 4 : Validation d'un Numéro de Téléphone</h3>
+<div class="example">
+    <pre>
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class PhoneValidationExample {
+    public static void main(String[] args) {
+        String phoneNumber = "123-456-7890";
+        String regex = "\\d{3}-\\d{3}-\\d{4}";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+
+        if (matcher.matches()) {
+            System.out.println("Numéro de téléphone valide.");
+        } else {
+            System.out.println("Numéro de téléphone invalide.");
+        }
+    }
+}
+    </pre>
+    <p>Dans cet exemple, nous validons un numéro de téléphone au format "123-456-7890". Le motif <code>\\d{3}-\\d{3}-\\d{4}</code> vérifie que le numéro est composé de trois groupes de chiffres séparés par des tirets. La méthode <code>matches()</code> de <code>Matcher</code> vérifie si l'ensemble du texte correspond au motif.</p>
+</div>
+
+<h3>Exemple 5 : Extraction d'Emails</h3>
+<div class="example">
+    <pre>
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class EmailExtractorExample {
+    public static void main(String[] args) {
+        String text = "Contactez-nous à info@example.com ou support@example.org.";
+        String regex = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            System.out.println("Email trouvé: " + matcher.group());
+        }
+    }
+}
+    </pre>
+    <p>Cet exemple montre comment extraire des adresses email d'un texte. Le motif <code>\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b</code> correspond à une structure d'email standard. La méthode <code>find()</code> de <code>Matcher</code> est utilisée pour trouver toutes les occurrences du motif dans le texte.</p>
+</div>
+
+<h2>Conclusion</h2>
+<p>Les expressions régulières sont un outil puissant pour la manipulation de chaînes de caractères en Java. Elles permettent de définir des motifs de recherche complexes et d'effectuer des opérations de recherche, de remplacement et de validation de manière efficace.</p>
+
+</body>
+</html>
