@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types de Données et Variables en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Types de Données et Variables en Java</h1>
+    <div class="chapitre">
+        <h2>Types de Données</h2>
+        <p>En Java, les types de données définissent le type de valeur qu'une variable peut contenir. Il existe deux catégories principales : les types primitifs et les types référencés.</p>
+        <p><strong>Types Primitifs :</strong></p>
+        <ul>
+            <li><strong>byte</strong> : 8 bits, valeurs de -128 à 127.</li>
+            <li><strong>short</strong> : 16 bits, valeurs de -32,768 à 32,767.</li>
+            <li><strong>int</strong> : 32 bits, valeurs de -2^31 à 2^31-1.</li>
+            <li><strong>long</strong> : 64 bits, valeurs de -2^63 à 2^63-1.</li>
+            <li><strong>float</strong> : 32 bits, nombres à virgule flottante.</li>
+            <li><strong>double</strong> : 64 bits, nombres à virgule flottante de plus grande précision.</li>
+            <li><strong>boolean</strong> : valeurs true ou false.</li>
+            <li><strong>char</strong> : 16 bits, caractères Unicode.</li>
+        </ul>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Variables</h2>
+        <p>Une variable est un conteneur pour stocker des données. En Java, tu dois déclarer une variable avec un type avant de pouvoir l'utiliser.</p>
+        <div class="exemple">
+            <p>Exemple 1 : Déclaration et initialisation d'une variable.</p>
+            <pre><code>int age = 25;</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 2 : Utilisation de différents types de données.</p>
+            <pre><code>double price = 19.99;
+char grade = 'A';
+boolean isStudent = true;</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 3 : Modification de la valeur d'une variable.</p>
+            <pre><code>int score = 100;
+score = 150;</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Conversion de Types :</strong></p>
+            <ul>
+                <li><code>Integer.parseInt(String s)</code> : Convertit une chaîne en un entier.</li>
+                <li><code>Double.parseDouble(String s)</code> : Convertit une chaîne en un double.</li>
+                <li><code>String.valueOf(int i)</code> : Convertit un entier en une chaîne.</li>
+            </ul>
+            <p><strong>Affichage :</strong></p>
+            <ul>
+                <li><code>System.out.println(variable)</code> : Affiche la valeur de la variable dans la console.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Déclare une variable de type <code>int</code> appelée <code>number</code> et initialise-la avec la valeur 42. Affiche sa valeur.</p>
+        </div>
+        <div class="exercice">
+            <p>Exercice 2 : Crée un programme qui déclare deux variables de type <code>double</code>, les initialise avec des valeurs de ton choix, et affiche leur somme.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+</body>
+</html>
