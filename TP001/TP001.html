@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours Java - Introduction</title>
+    <title>Introduction à Java</title>
     <style>
         body {
             background-color: #1e1e1e;
@@ -12,52 +12,41 @@
             margin: 0;
             padding: 20px;
         }
-        h1, h2, h3 {
+        h1, h2 {
             color: #ff6f61;
         }
-        code {
-            background-color: #2e2e2e;
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice {
+            background-color: #2c2c2c;
             padding: 10px;
             border-radius: 5px;
-            display: block;
-            margin: 10px 0;
-        }
-        .exercise {
-            margin-top: 20px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Introduction à Java</h1>
-    <h2>Qu'est-ce que Java ?</h2>
-    <p>Java est un langage de programmation orienté objet, conçu pour être simple et portable. Il est largement utilisé pour le développement d'applications web, mobiles et embarquées. Java fonctionne sur la machine virtuelle Java (JVM), ce qui permet aux programmes Java d'être exécutés sur n'importe quelle plateforme supportant la JVM.</p>
-
-    <h2>Installation de l'Environnement de Développement</h2>
-    <p>Pour commencer à programmer en Java, suivez ces étapes :</p>
-    <ol>
-        <li><strong>Installer le JDK (Java Development Kit)</strong> : Téléchargez et installez le JDK depuis le site officiel d'Oracle ou utilisez une distribution open-source comme OpenJDK.</li>
-        <li><strong>Configurer les Variables d'Environnement</strong> : Ajoutez le chemin vers le répertoire <code>bin</code> du JDK à votre variable d'environnement <code>PATH</code>.</li>
-        <li><strong>Installer un IDE (Integrated Development Environment)</strong> : Utilisez un IDE comme IntelliJ IDEA, Eclipse ou NetBeans pour écrire et gérer votre code Java.</li>
-    </ol>
-
-    <h2>Premier Programme Java : "Hello, World!"</h2>
-    <p>Voici un exemple de programme Java simple qui affiche "Hello, World!" à l'écran :</p>
-    <code>
-        public class HelloWorld {
-            public static void main(String[] args) {
-                System.out.println("Hello, World!");
-            }
-        }
-    </code>
-
-    <h2>Exercices</h2>
-    <div class="exercise">
-        <h3>Exercice 1</h3>
-        <p>Écrivez un programme Java qui affiche votre nom à l'écran.</p>
+    <div class="chapitre">
+        <h2>Présentation de Java</h2>
+        <p>Java est un langage de programmation orienté objet, conçu pour être portable et sécurisé. Il est largement utilisé pour le développement d'applications web, mobiles et embarquées.</p>
+        <p>Pour en savoir plus, consultez la <a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">documentation officielle</a>.</p>
     </div>
-    <div class="exercise">
-        <h3>Exercice 2</h3>
-        <p>Modifiez le programme "Hello, World!" pour qu'il affiche un message de bienvenue personnalisé en fonction de l'heure de la journée (par exemple, "Bonjour" le matin, "Bon après-midi" l'après-midi, etc.).</p>
+    <div class="chapitre">
+        <h2>Installation de l'environnement de développement</h2>
+        <p>Pour commencer à programmer en Java, vous devez installer le JDK (Java Development Kit) et un IDE (Integrated Development Environment) comme IntelliJ IDEA ou Eclipse.</p>
+        <p>Suivez ce <a href="https://www.youtube.com/watch?v=kOYgbdmFdTw" target="_blank">tutoriel vidéo</a> pour installer le JDK et configurer votre IDE.</p>
     </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Installez le JDK sur votre machine et configurez un projet Java dans votre IDE préféré.</p>
+        </div>
+        <div class="exercice">
+            <p>Exercice 2 : Écrivez un programme simple "Hello World" en Java et exécutez-le.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
 </body>
 </html>
