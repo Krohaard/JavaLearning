@@ -25,7 +25,7 @@ public class TP014 {
 		kChooseMenu=0;
 		kRead = new Scanner(System.in);
 		Magasin = new Catalog();
-		ShoppingCarts = new ManageOrder();
+		ShoppingCarts = new ManageOrder(Magasin);
 		while( kChooseMenu != 3 ) {
 			kChooseMenu = (Integer) (KFunc.kQuestion(kRead, displaymenu(),"integer"));
 			if(kChooseMenu>0 && kChooseMenu<4) {

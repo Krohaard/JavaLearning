@@ -19,23 +19,40 @@ public class Catalog {
 	Catalog(){
 		this.kProducts = new ArrayList<>();
 	}
+	public Product getProduct(int kIndexArray) {
+		return this.kProducts.get(kIndexArray);
+	}
+	public Product searchById(int kIdProduct) {
+		int kk;
+		Product kTemp = null;
+		for(kk=0;kk<this.kProducts.size();kk++) {
+			if(this.kProducts.get(kk).getID()==kIdProduct) {
+				kTemp = this.kProducts.get(kk);
+				break;
+			}
+		}
+		return kTemp;
+	}
 	private void AddProduct(Scanner kRead) {
 		Product kProduct;
 		Integer kQuantity;
 		String kName;
 		Double kPrice;
+		boolean kTwice=true;
 
 		kName = (String) KFunc.kQuestion(kRead, "Entrez le nom du produit :","string");
 		if(kCheckProductExist(kName)) {
-			KFunc.kQuestion(kRead,"Voulez-vous créer un doublon y/[N] :","boolean");
+			kTwice = (boolean) KFunc.kQuestion(kRead,"Voulez-vous créer un doublon y/[N] :","boolean");
 		}
-		kPrice = (Double) KFunc.kQuestion(kRead, "Entrez le prix :","double");
-		kQuantity = (Integer) KFunc.kQuestion(kRead, "Entrez le stock :","integer");
-
-		kProduct = new Product(kGenerateID(),kName, kPrice, kQuantity);
-		this.kProducts.add(kProduct);
+		if(kTwice) {
+			kPrice = (Double) KFunc.kQuestion(kRead, "Entrez le prix :","double");
+			kQuantity = (Integer) KFunc.kQuestion(kRead, "Entrez le stock :","integer");
+	
+			kProduct = new Product(kGenerateID(),kName, kPrice, kQuantity);
+			this.kProducts.add(kProduct);
+		}
 	}
-	private boolean kCheckProductExist(String oName) {
+	protected boolean kCheckProductExist(String oName) {
 		if(!this.kProducts.isEmpty()) {
 			List<Product> kFilter = this.kProducts.stream().filter(kElement -> kElement.getName().equalsIgnoreCase(oName)).collect(Collectors.toList());
 			if(!kFilter.isEmpty()) {
@@ -44,7 +61,7 @@ public class Catalog {
 		}
 		return false;
 	}
-	private void SearchProduct(Scanner kRead) {
+	protected void SearchProduct(Scanner kRead) {
 		String kSearch;
 		if(!kCheckEmptyProducts()) {
 				kSearch = (String) KFunc.kQuestion(kRead,"Veuillez taper un nom du produit chercher :","string");
@@ -56,7 +73,7 @@ public class Catalog {
 				}
 		}
 	}
-	private void ShowProducts() {
+	protected void ShowProducts() {
 		if(!kCheckEmptyProducts()) {
 			for(Product kElement : this.kProducts) {
 				System.out.printf(" - [%d] %s - %.2f€ (Stock : %d)\n", kElement.getID(),kElement.getName(),kElement.getPrice(),kElement.getQty());
@@ -92,12 +109,12 @@ public class Catalog {
 	private int kGenerateID() {
 		return this.kProducts.stream().mapToInt(Product::getID).max().orElse(0)+1;
 	}
-	private boolean kCheckProductID(int kId) {
+	protected boolean kCheckProductID(int kId) {
 		if(this.kProducts.stream().filter(kElement -> kElement.getID() == kId).count()>0) return true;
 		System.out.printf("Le produite avec l'id: %d, n'existe pas\n",kId);
 		return false;
 	}
-	private boolean kCheckEmptyProducts() {
+	protected boolean kCheckEmptyProducts() {
 		if(this.kProducts.isEmpty()) {
 			System.out.println("Il n'y a aucun produit dans le catalogue.");
 			return true;

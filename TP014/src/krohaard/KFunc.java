@@ -22,20 +22,11 @@ public class KFunc {
 	public static Object kQuestion(Scanner kRead, String kQuestion, String kOutput) {
 		Object kTemp;
 		kTemp = kQuestion(kRead,kQuestion);
-		if(kOutput.equalsIgnoreCase("boolean")) {
-			if(kYesNoQuestion(kQuestion))
-				if(kCheckYesNoDefault(kQuestion))
-					switch(kDefaultYesNoQuestion(kQuestion)) {
-					case 'y':
-					case 'o':
-						break;
-					case 'n':
-						break;
-					}
-		}
+		kTemp = kYesNoQuestion(kTemp,kQuestion,kOutput);
 		while(!kCheckConvertType(kOutput,kTemp)) {
 			System.out.println("Erreur de saisie.");
 			kTemp = kQuestion(kRead,kQuestion);
+			kTemp = kYesNoQuestion(kTemp,kQuestion,kOutput);
 		}
 		if(!kCheckTypeAnswer(kOutput,kTemp))
 			kTemp = kConvertType(kTemp,kOutput);
@@ -88,7 +79,7 @@ public class KFunc {
 		kTypeList.put("long",5);
 		kTypeList.put("short",6);
 		kTypeList.put("byte",7);
-
+		
 		if(kTypeList.get(kValue.getClass().getSimpleName().toLowerCase())>=kTypeList.get(kDataType)) {
 			kStatus = true;
 		}
@@ -121,33 +112,53 @@ public class KFunc {
 		kInput.close();
 		return kIdentifier;
 	}
-	private static boolean kYesNoQuestion(String kLine) {
-		boolean kCheck=false;
-		String kRegex = "\\[(Y|y|O|o)\\]/\\[(N|n)\\]|\\[(N|n)\\]/[Oo]";
+	private static Object kYesNoQuestion(Object kInput,String kLine,String kTypeExpected) {
+		String kRegex = "\\[*\\(*[YyOoNn]\\)*\\]*/\\[*\\(*[NnYyOo]\\)*\\]*";
 		Pattern kPattern = Pattern.compile(kRegex);
 		Matcher kMatcher = kPattern.matcher(kLine);
-		if(kMatcher.find()) {
-			kCheck = true;
+		if(kTypeExpected.equalsIgnoreCase("boolean")) {
+			if(kMatcher.find()) {
+				kRegex = "[\\(\\[](.)[\\)\\]]";
+				kPattern = Pattern.compile(kRegex);
+				kMatcher = kPattern.matcher(kLine);
+				if(kMatcher.find()) {
+					if(kInput.toString().isBlank() || kInput.toString().isEmpty()) kInput = kMatcher.group(1);
+					switch(kInput.toString().toLowerCase()) {
+						case "y":
+						case "o":
+							kInput = true;
+							break;
+						case "n":
+							kInput = false;
+							break;
+					}
+				}
+			}
 		}
-		kRegex = null;
-		return kCheck;
+		return kInput;
 	}
-	private static boolean kCheckYesNoDefault(String kLine) {
-		boolean kCheck=false;
-		String kRegex = "\\[*\\(*\\]*\\)*";;
-		Pattern kPattern = Pattern.compile(kRegex);
-		Matcher kMatcher = kPattern.matcher(kLine);
-		if(kMatcher.find()) {
-			kCheck = true;
+/*
+		if(kOutput.equalsIgnoreCase("boolean")) {
+			if(kYesNoQuestion(kQuestion))
+				if(kCheckYesNoDefault(kQuestion))
+					switch(kDefaultYesNoQuestion(kQuestion)) {
+						case 'y':
+						case 'o':
+							kEmptyDefault=true;
+							break;
+						case 'n':
+							kEmptyDefault=false;
+							break;
+					}
 		}
-		kRegex = null;
-		return kCheck;
-	}
+
+ */
 	private static char kDefaultYesNoQuestion(String kLine) {
-		String kRegex = "[(\\[](.)[)\\]]";
+		String kRegex = "[\\(\\[](.)[\\)\\]]";
 		Pattern kPattern = Pattern.compile(kRegex);
 		Matcher kMatcher = kPattern.matcher(kLine);
 		kRegex = null;
-		return kMatcher.group(0).toLowerCase().charAt(0);
+		kMatcher.find();
+		return kMatcher.group(1).toLowerCase().charAt(0);
 	}
 }

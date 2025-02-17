@@ -12,7 +12,6 @@ public class Product {
 	private double kPrice;
 	private int kQty;
 
-
 	protected Product(int oID, String oName, double oPrice, int oQty) {
 		this.kID = oID;
 		this.kName = oName;

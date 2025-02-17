@@ -12,6 +12,13 @@ public class Order {
 	private int kID;
 	private HashMap<Product, Integer> kShoppingCart;
 	private String kStatus;
+	private double kTotalOrder;
+	protected Order(int oId) {
+		this.kID = oId;
+		this.kShoppingCart = new HashMap<>();
+		this.kStatus = "En attente";
+		this.kTotalOrder = 0;
+	}
 	/**
 	 * @return the kID
 	 */
@@ -30,11 +37,9 @@ public class Order {
 	public HashMap<Product, Integer> getShoppingCart() {
 		return kShoppingCart;
 	}
-	/**
-	 * @param kShoppingCart the kShoppingCart to set
-	 */
-	public void setShoppingCart(HashMap<Product, Integer> kShoppingCart) {
-		this.kShoppingCart = kShoppingCart;
+	public void addProduct(Product kElement,Integer kQty) {
+		this.kShoppingCart.put(kElement, kQty);
+//		this.kTotalOrder;
 	}
 	/**
 	 * @return the kStatus
@@ -47,6 +52,18 @@ public class Order {
 	 */
 	public void setStatus(String kStatus) {
 		this.kStatus = kStatus;
+	}
+	/**
+	 * @return the kTotalOrder
+	 */
+	public double getTotalOrder() {
+		return kTotalOrder;
+	}
+	/**
+	 * @param kTotalOrder the kTotalOrder to set
+	 */
+	public void setTotalOrder(double kTotalOrder) {
+		this.kTotalOrder = kTotalOrder;
 	}
 	
 }
