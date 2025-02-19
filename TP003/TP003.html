@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opérateurs en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Opérateurs en Java</h1>
+    <div class="chapitre">
+        <h2>Types d'Opérateurs</h2>
+        <p>Les opérateurs sont des symboles qui effectuent des opérations sur des variables et des valeurs. Java supporte plusieurs types d'opérateurs :</p>
+        <ul>
+            <li><strong>Arithmétiques</strong> : +, -, *, /, %</li>
+            <li><strong>Relationnels</strong> : ==, !=, >, <, >=, <=</li>
+            <li><strong>Logiques</strong> : &&, ||, !</li>
+            <li><strong>D'affectation</strong> : =, +=, -=, *=, /=</li>
+            <li><strong>D'incrémentation/décrémentation</strong> : ++, --</li>
+        </ul>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Utilisation des Opérateurs</h2>
+        <div class="exemple">
+            <p>Exemple 1 : Opérateurs arithmétiques.</p>
+            <pre><code>int sum = 5 + 3; // sum vaut 8
+int difference = 10 - 4; // difference vaut 6
+int product = 7 * 2; // product vaut 14
+int quotient = 20 / 4; // quotient vaut 5
+int remainder = 15 % 4; // remainder vaut 3</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 2 : Opérateurs relationnels.</p>
+            <pre><code>boolean isEqual = (5 == 3); // isEqual vaut false
+boolean isNotEqual = (10 != 5); // isNotEqual vaut true
+boolean isGreater = (7 > 2); // isGreater vaut true</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 3 : Opérateurs logiques.</p>
+            <pre><code>boolean andResult = (true && false); // andResult vaut false
+boolean orResult = (true || false); // orResult vaut true
+boolean notResult = !true; // notResult vaut false</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Mathématiques :</strong></p>
+            <ul>
+                <li><code>Math.abs(int a)</code> : Retourne la valeur absolue d'un entier.</li>
+                <li><code>Math.max(int a, int b)</code> : Retourne le plus grand des deux entiers.</li>
+                <li><code>Math.min(int a, int b)</code> : Retourne le plus petit des deux entiers.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Écris un programme qui utilise les opérateurs arithmétiques pour calculer la somme, la différence, le produit et le quotient de deux nombres entiers.</p>
+        </div>
+        <div class="exercice">
+            <p>Exercice 2 : Crée un programme qui utilise les opérateurs relationnels pour vérifier si un nombre est positif, négatif ou égal à zéro.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+</body>
+</html>
