@@ -18,6 +18,7 @@ public class Car extends Automotive {
 	public int getDoors() {
 		return this.kNumberDoors;
 	}
+	@Override
 	public void displayCharacteristics() {
 		super.displayCharacteristics();
 		System.out.printf("\t- Votre voiture à: %d portes\n",this.kNumberDoors);
