@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Héritage en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Héritage en Java</h1>
+    <div class="chapitre">
+        <h2>Concept d'Héritage</h2>
+        <p>L'héritage est un mécanisme qui permet à une classe (appelée sous-classe ou classe dérivée) d'hériter des attributs et des méthodes d'une autre classe (appelée super-classe ou classe de base).</p>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Création d'une Sous-Classe</h2>
+        <div class="exemple">
+            <p>Exemple 1 : Définition d'une classe de base et d'une sous-classe.</p>
+            <pre><code>class Animal {
+    // Attribut
+    String nom;
+
+    // Constructeur
+    public Animal(String nom) {
+        this.nom = nom;
+    }
+
+    // Méthode
+    public void faireDuBruit() {
+        System.out.println("L'animal fait du bruit.");
+    }
+}
+
+class Chien extends Animal {
+    // Constructeur
+    public Chien(String nom) {
+        super(nom);
+    }
+
+    // Surcharge de la méthode faireDuBruit
+    @Override
+    public void faireDuBruit() {
+        System.out.println("Le chien aboie.");
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Utilisation de l'Héritage</h2>
+        <div class="exemple">
+            <p>Exemple 2 : Utilisation de la sous-classe.</p>
+            <pre><code>public class Main {
+    public static void main(String[] args) {
+        // Création d'un objet Chien
+        Chien monChien = new Chien("Rex");
+        // Appel de la méthode surchargée
+        monChien.faireDuBruit();
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Méthodes d'Héritage :</strong></p>
+            <ul>
+                <li><code>super()</code> : Appelle le constructeur de la super-classe.</li>
+                <li><code>super.methode()</code> : Appelle une méthode de la super-classe.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Crée une classe <code>Vehicule</code> avec les attributs <code>marque</code> et <code>modele</code>. Ajoute une méthode pour afficher les détails du véhicule. Ensuite, crée une sous-classe <code>Voiture</code> qui hérite de <code>Vehicule</code> et ajoute un attribut <code>nombreDePortes</code>.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+    <p><a href="https://chat.mistral.ai/chat/689859c1-8345-4140-a657-67f5119e0a13" target="_blank">Revenir à la conversation</a></p>
+</body>
+</html>
