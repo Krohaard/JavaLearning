@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmation Orientée Objet en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programmation Orientée Objet en Java</h1>
+    <div class="chapitre">
+        <h2>Classes et Objets</h2>
+        <p>En POO, une classe est un modèle pour créer des objets. Un objet est une instance d'une classe.</p>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/java/concepts/class.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Création d'une Classe</h2>
+        <div class="exemple">
+            <p>Exemple 1 : Définition d'une classe simple.</p>
+            <pre><code>public class Voiture {
+    // Attributs
+    String marque;
+    String modele;
+    int annee;
+
+    // Constructeur
+    public Voiture(String marque, String modele, int annee) {
+        this.marque = marque;
+        this.modele = modele;
+        this.annee = annee;
+    }
+
+    // Méthode
+    public void afficherDetails() {
+        System.out.println(marque + " " + modele + " (" + annee + ")");
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Utilisation d'Objets</h2>
+        <div class="exemple">
+            <p>Exemple 2 : Création et utilisation d'un objet.</p>
+            <pre><code>public class Main {
+    public static void main(String[] args) {
+        // Création d'un objet Voiture
+        Voiture maVoiture = new Voiture("Toyota", "Corolla", 2020);
+        // Appel de la méthode afficherDetails
+        maVoiture.afficherDetails();
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Méthodes de Classe :</strong></p>
+            <ul>
+                <li><code>getClass()</code> : Retourne l'objet Class représentant la classe de cet objet.</li>
+                <li><code>toString()</code> : Retourne une représentation sous forme de chaîne de l'objet.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Crée une classe <code>Personne</code> avec les attributs <code>nom</code> et <code>age</code>. Ajoute un constructeur et une méthode pour afficher les détails de la personne.</p>
+        </div>
+        <div class="exercice">
+            <p>Exercice 2 : Crée un programme qui utilise la classe <code>Personne</code> pour instancier deux objets et afficher leurs détails.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+    <p><a href="https://chat.mistral.ai/chat/689859c1-8345-4140-a657-67f5119e0a13" target="_blank">Revenir à la conversation</a></p>
+</body>
+</html>
