@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaces en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interfaces en Java</h1>
+    <div class="chapitre">
+        <h2>Concept d'Interface</h2>
+        <p>Une interface en Java est une référence de type, similaire à une classe, qui peut contenir uniquement des méthodes abstraites et des constantes. Les interfaces sont utilisées pour spécifier un comportement que les classes implémentant l'interface doivent suivre.</p>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/java/concepts/interface.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Déclaration d'une Interface</h2>
+        <div class="exemple">
+            <p>Exemple 1 : Déclaration d'une interface simple.</p>
+            <pre><code>interface Animal {
+    // Méthode abstraite
+    void faireDuBruit();
+
+    // Constante
+    String TYPE = "Animal";
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Implémentation d'une Interface</h2>
+        <div class="exemple">
+            <p>Exemple 2 : Implémentation de l'interface par une classe.</p>
+            <pre><code>class Chien implements Animal {
+    // Implémentation de la méthode abstraite
+    public void faireDuBruit() {
+        System.out.println("Le chien aboie.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Chien monChien = new Chien();
+        monChien.faireDuBruit(); // Affiche : Le chien aboie.
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Méthodes d'Interface :</strong></p>
+            <ul>
+                <li><code>default</code> : Permet de fournir une implémentation par défaut pour une méthode dans une interface.</li>
+                <li><code>static</code> : Permet de définir une méthode statique dans une interface.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Crée une interface <code>Dessin</code> avec une méthode <code>dessiner</code>. Ensuite, crée une classe <code>Cercle</code> qui implémente cette interface et dessine un cercle.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+    <p><a href="https://chat.mistral.ai/chat/689859c1-8345-4140-a657-67f5119e0a13" target="_blank">Revenir à la conversation</a></p>
+</body>
+</html>
