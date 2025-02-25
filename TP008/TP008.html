@@ -29,94 +29,38 @@
 <body>
     <h1>Exercice Avancé sur les Interfaces en Java</h1>
     <div class="chapitre">
-        <h2>Concept d'Interfaces Multiples</h2>
-        <p>Dans cet exercice, nous allons explorer comment une classe peut implémenter plusieurs interfaces. Cela permet de définir des comportements multiples que la classe doit suivre.</p>
+        <h2>Contexte</h2>
+        <p>Dans cet exercice, tu vas créer un système de gestion de formes géométriques utilisant des interfaces pour définir des comportements communs.</p>
     </div>
     <div class="chapitre">
-        <h2>Exercice : Système de Gestion de Bibliothèque</h2>
-        <p>Crée un système de gestion de bibliothèque en utilisant les interfaces suivantes :</p>
-        <ul>
-            <li><strong>Interface `Empruntable`</strong> : Définir une méthode <code>emprunter</code> qui simule l'emprunt d'un livre.</li>
-            <li><strong>Interface `Retournable`</strong> : Définir une méthode <code>retourner</code> qui simule le retour d'un livre.</li>
-            <li><strong>Interface `Affichable`</strong> : Définir une méthode <code>afficherDetails</code> qui affiche les détails d'un livre.</li>
-        </ul>
-        <p>Ensuite, crée une classe `Livre` qui implémente les trois interfaces ci-dessus. La classe doit avoir les attributs suivants :</p>
-        <ul>
-            <li><code>titre</code> : Le titre du livre.</li>
-            <li><code>auteur</code> : L'auteur du livre.</li>
-            <li><code>disponible</code> : Un booléen indiquant si le livre est disponible.</li>
-        </ul>
-        <p>La classe `Livre` doit implémenter les méthodes des interfaces pour gérer l'emprunt, le retour et l'affichage des détails du livre.</p>
-    </div>
-    <div class="chapitre">
-        <h2>Fonctions Utiles</h2>
-        <div class="fonctions">
-            <p><strong>Méthodes d'Interface :</strong></p>
-            <ul>
-                <li><code>default</code> : Permet de fournir une implémentation par défaut pour une méthode dans une interface.</li>
-                <li><code>static</code> : Permet de définir une méthode statique dans une interface.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="chapitre">
-        <h2>Exemple de Solution</h2>
-        <div class="exemple">
-            <p>Voici un exemple de solution pour l'exercice :</p>
-            <pre><code>interface Empruntable {
-    void emprunter();
-}
-
-interface Retournable {
-    void retourner();
-}
-
-interface Affichable {
-    void afficherDetails();
-}
-
-class Livre implements Empruntable, Retournable, Affichable {
-    private String titre;
-    private String auteur;
-    private boolean disponible;
-
-    public Livre(String titre, String auteur) {
-        this.titre = titre;
-        this.auteur = auteur;
-        this.disponible = true;
-    }
-
-    @Override
-    public void emprunter() {
-        if (disponible) {
-            System.out.println("Le livre a été emprunté.");
-            disponible = false;
-        } else {
-            System.out.println("Le livre n'est pas disponible.");
-        }
-    }
-
-    @Override
-    public void retourner() {
-        System.out.println("Le livre a été retourné.");
-        disponible = true;
-    }
-
-    @Override
-    public void afficherDetails() {
-        System.out.printf("Titre: %s, Auteur: %s, Disponible: %s\n", titre, auteur, disponible ? "Oui" : "Non");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Livre livre = new Livre("1984", "George Orwell");
-        livre.afficherDetails();
-        livre.emprunter();
-        livre.afficherDetails();
-        livre.retourner();
-        livre.afficherDetails();
-    }
-}</code></pre>
+        <h2>Exercice : Système de Gestion de Formes</h2>
+        <div class="exercice">
+            <p>Crée un programme qui gère différentes formes géométriques (Cercle, Rectangle, Triangle) en utilisant des interfaces pour définir des comportements communs.</p>
+            <h3>Exigences :</h3>
+            <ol>
+                <li><strong>Interface `Forme` :</strong> Définis une interface `Forme` avec les méthodes suivantes :
+                    <ul>
+                        <li><code>double calculerAire()</code> : Calcule et retourne l'aire de la forme.</li>
+                        <li><code>double calculerPerimetre()</code> : Calcule et retourne le périmètre de la forme.</li>
+                        <li><code>void dessiner()</code> : Affiche une représentation textuelle de la forme.</li>
+                    </ul>
+                </li>
+                <li><strong>Classes Concrètes :</strong> Implémente les classes suivantes qui mettent en œuvre l'interface `Forme` :
+                    <ul>
+                        <li><code>Cercle</code> : A un attribut <code>rayon</code>.</li>
+                        <li><code>Rectangle</code> : A des attributs <code>longueur</code> et <code>largeur</code>.</li>
+                        <li><code>Triangle</code> : A des attributs <code>cote1</code>, <code>cote2</code>, et <code>cote3</code>.</li>
+                    </ul>
+                </li>
+                <li><strong>Classe `GestionFormes` :</strong> Crée une classe qui gère une collection de formes. Elle doit avoir les méthodes suivantes :
+                    <ul>
+                        <li><code>void ajouterForme(Forme forme)</code> : Ajoute une forme à la collection.</li>
+                        <li><code>void dessinerFormes()</code> : Dessine toutes les formes dans la collection.</li>
+                        <li><code>double calculerAireTotale()</code> : Calcule et retourne l'aire totale de toutes les formes dans la collection.</li>
+                    </ul>
+                </li>
+                <li><strong>Programme Principal :</strong> Dans la méthode <code>main</code>, crée plusieurs formes, ajoute-les à la collection, et utilise les méthodes de `GestionFormes` pour afficher les résultats.</li>
+            </ol>
         </div>
     </div>
     <p><strong>ExpertTime :</strong> 2 heures</p>
