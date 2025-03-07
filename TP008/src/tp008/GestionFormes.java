@@ -3,29 +3,32 @@
  */
 package tp008;
 
-
+import java.util.ArrayList;
 
 /**
  * 
  */
 public class GestionFormes {
-	private Cercle kCercle;
-	private Rectangle kRectangle;
-	private Triangle kTriangle;
-	
+	private ArrayList<Forme> kListForm;
+
 	GestionFormes(){
-		this.kCercle = new Cercle();
-		this.kRectangle = new Rectangle();
-		this.kTriangle = new Triangle();
+		this.kListForm = new ArrayList<>();
 	}
-	public void AddForm() {
-		
+	public void AddForm(Forme oForme) {
+		this.kListForm.add(oForme);
 	}
 	public void DrawForm() {
-		
+		for(Forme kElement : kListForm) {
+			kElement.dessiner();
+		}
 	}
-	public double SurfaceCalculation() {
-		return 0;
+	public ArrayList<Double> SurfaceCalculation() {
+		ArrayList<Double> kSurface;
+		kSurface = new ArrayList<>();
+		for(Forme kElement : kListForm) {
+			kSurface.add(kElement.calculerAire());
+		}
+		return kSurface;
 	}
 	
 }
