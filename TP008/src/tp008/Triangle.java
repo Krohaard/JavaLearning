@@ -35,5 +35,4 @@ public class Triangle implements Forme{
 		// TODO Auto-generated method stub
 		System.out.printf("Je dessine un %s qui fait une superficie de %.2fmm², et un périmètre de %.2fmm\n",this.getClass().toString().split("[.]")[1], this.calculerAire(),this.calculerPerimetre());
 	}
-
 }

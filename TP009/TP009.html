@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections et Structures de Données en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Collections et Structures de Données en Java</h1>
+    <div class="chapitre">
+        <h2>Introduction aux Collections</h2>
+        <p>Les collections en Java sont des structures de données qui permettent de stocker et de manipuler des groupes d'objets. Elles sont définies dans le package <code>java.util</code>.</p>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/collections/index.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Types de Collections</h2>
+        <ul>
+            <li><strong>List</strong> : Une collection ordonnée qui peut contenir des doublons (par exemple, <code>ArrayList</code>).</li>
+            <li><strong>Set</strong> : Une collection non ordonnée qui ne peut pas contenir de doublons (par exemple, <code>HashSet</code>).</li>
+            <li><strong>Map</strong> : Une collection d'associations clé/valeur (par exemple, <code>HashMap</code>).</li>
+        </ul>
+    </div>
+    <div class="chapitre">
+        <h2>Exemples</h2>
+        <div class="exemple">
+            <p>Exemple 1 : Utilisation d'une <code>ArrayList</code>.</p>
+            <pre><code>import java.util.ArrayList;
+
+public class ExempleListe {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; liste = new ArrayList&lt;&gt;();
+        liste.add("Pomme");
+        liste.add("Banane");
+        liste.add("Cerise");
+
+        for (String fruit : liste) {
+            System.out.println(fruit);
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 2 : Utilisation d'un <code>HashSet</code>.</p>
+            <pre><code>import java.util.HashSet;
+
+public class ExempleSet {
+    public static void main(String[] args) {
+        HashSet&lt;String&gt; ensemble = new HashSet&lt;&gt;();
+        ensemble.add("Chat");
+        ensemble.add("Chien");
+        ensemble.add("Chat"); // Doublon, ne sera pas ajouté
+
+        for (String animal : ensemble) {
+            System.out.println(animal);
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 3 : Utilisation d'un <code>HashMap</code>.</p>
+            <pre><code>import java.util.HashMap;
+
+public class ExempleMap {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put("Un", 1);
+        map.put("Deux", 2);
+        map.put("Trois", 3);
+
+        for (String clé : map.keySet()) {
+            System.out.println(clé + " : " + map.get(clé));
+        }
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Méthodes de Collection :</strong></p>
+            <ul>
+                <li><code>add(E e)</code> : Ajoute un élément à la collection.</li>
+                <li><code>remove(Object o)</code> : Supprime un élément de la collection.</li>
+                <li><code>size()</code> : Retourne le nombre d'éléments dans la collection.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Crée une <code>ArrayList</code> de nombres entiers et calcule la somme de tous les éléments.</p>
+        </div>
+        <div class="exercice">
+            <p>Exercice 2 : Utilise un <code>HashMap</code> pour stocker les noms des étudiants et leurs notes, puis affiche les étudiants ayant une note supérieure à la moyenne.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+    <p><a href="https://chat.mistral.ai/chat/689859c1-8345-4140-a657-67f5119e0a13" target="_blank">Revenir à la conversation</a></p>
+</body>
+</html>
