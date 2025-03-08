@@ -73,6 +73,44 @@
         </div>
     </div>
     <div class="chapitre">
+        <h2>Lecture et Écriture de Fichiers</h2>
+        <div class="exemple">
+            <p>Exemple 3 : Lecture d'un fichier texte.</p>
+            <pre><code>import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LectureFichier {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("fichier.txt"))) {
+            String ligne;
+            while ((ligne = br.readLine()) != null) {
+                System.out.println(ligne);
+            }
+        } catch (IOException e) {
+            System.out.println("Erreur de lecture du fichier.");
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 4 : Écriture dans un fichier texte.</p>
+            <pre><code>import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EcritureFichier {
+    public static void main(String[] args) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("fichier.txt"))) {
+            bw.write("Bonjour, ceci est un test d'écriture dans un fichier.");
+        } catch (IOException e) {
+            System.out.println("Erreur d'écriture dans le fichier.");
+        }
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
         <h2>Fonctions Utiles</h2>
         <div class="fonctions">
             <p><strong>Méthodes de Gestion des Exceptions :</strong></p>

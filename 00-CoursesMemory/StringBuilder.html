@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilisation de StringBuilder en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        code {
+            background-color: #2e2e2e;
+            color: #ff6f61;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #2e2e2e;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Utilisation de StringBuilder en Java</h1>
+
+<h2>Chapitre 1 : Introduction à StringBuilder</h2>
+<p>
+    <strong>Théorie :</strong>
+    <code>StringBuilder</code> est une classe en Java utilisée pour créer et manipuler des chaînes de caractères modifiables.
+    Contrairement à la classe <code>String</code>, qui est immuable, <code>StringBuilder</code> permet de modifier la chaîne sans créer de nouveaux objets.
+    Cela rend <code>StringBuilder</code> plus efficace pour les opérations de concaténation et de modification fréquentes.
+</p>
+
+<h3>Exemple 1 : Création et utilisation de base</h3>
+<pre>
+public class ExempleStringBuilder {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Bonjour");
+        sb.append(" ");
+        sb.append("tout le monde !");
+        System.out.println(sb.toString()); // Affiche : Bonjour tout le monde !
+    }
+}
+</pre>
+
+<h3>Exemple 2 : Modification de la chaîne</h3>
+<pre>
+public class ModificationStringBuilder {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Bonjour");
+        sb.insert(7, " à tous"); // Insère " à tous" à l'index 7
+        sb.replace(0, 7, "Salut"); // Remplace "Bonjour" par "Salut"
+        sb.delete(5, 10); // Supprime les caractères de l'index 5 à 9
+        System.out.println(sb.toString()); // Affiche : Salut à tous
+    }
+}
+</pre>
+
+<h3>Exemple 3 : Inversion de la chaîne</h3>
+<pre>
+public class InversionStringBuilder {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Bonjour");
+        sb.reverse();
+        System.out.println(sb.toString()); // Affiche : ruojnoB
+    }
+}
+</pre>
+
+<h2>Chapitre 2 : Performances et Bonnes Pratiques</h2>
+<p>
+    <strong>Théorie :</strong>
+    <code>StringBuilder</code> est particulièrement utile dans les boucles ou lorsque plusieurs modifications sont nécessaires sur une chaîne.
+    Il est plus performant que l'utilisation de <code>String</code> avec l'opérateur <code>+</code> pour la concaténation, car il évite la création de nombreux objets intermédiaires.
+</p>
+
+<h3>Exemple 1 : Utilisation dans une boucle</h3>
+<pre>
+public class BoucleStringBuilder {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            sb.append("Nombre : ").append(i).append("\n");
+        }
+        System.out.println(sb.toString());
+    }
+}
+</pre>
+
+<h3>Exemple 2 : Comparaison avec String</h3>
+<pre>
+public class ComparaisonString {
+    public static void main(String[] args) {
+        String str = "";
+        for (int i = 0; i < 10; i++) {
+            str += "Nombre : " + i + "\n"; // Moins performant
+        }
+        System.out.println(str);
+    }
+}
+</pre>
+
+<h3>Exemple 3 : Capacité et gestion de la mémoire</h3>
+<pre>
+public class CapaciteStringBuilder {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder(50); // Capacité initiale de 50
+        sb.ensureCapacity(100); // Augmente la capacité à 100 si nécessaire
+        System.out.println("Capacité : " + sb.capacity());
+    }
+}
+</pre>
+
+</body>
+</html>

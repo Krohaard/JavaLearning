@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture et Écriture de Fichiers en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        code {
+            background-color: #2e2e2e;
+            color: #ff6f61;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #2e2e2e;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Lecture et Écriture de Fichiers en Java</h1>
+
+<h2>Chapitre 1 : Introduction aux Flux en Java</h2>
+<p>
+    <strong>Théorie :</strong>
+    En Java, les opérations de lecture et d'écriture de fichiers sont gérées par des flux (streams).
+    Les principaux types de flux sont :
+    <ul>
+        <li><code>InputStream</code> et <code>OutputStream</code> pour les données binaires.</li>
+        <li><code>Reader</code> et <code>Writer</code> pour les données textuelles.</li>
+    </ul>
+    Les classes concrètes comme <code>FileInputStream</code>, <code>FileOutputStream</code>, <code>FileReader</code>, et <code>FileWriter</code> sont utilisées pour manipuler les fichiers.
+</p>
+
+<h3>Exemple 1 : Écriture dans un fichier texte</h3>
+<pre>
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EcritureFichier {
+    public static void main(String[] args) {
+        try (FileWriter writer = new FileWriter("exemple.txt")) {
+            writer.write("Bonjour, ceci est un test d'écriture dans un fichier.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</pre>
+
+<h3>Exemple 2 : Lecture d'un fichier texte</h3>
+<pre>
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LectureFichier {
+    public static void main(String[] args) {
+        try (FileReader reader = new FileReader("exemple.txt")) {
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</pre>
+
+<h3>Exemple 3 : Écriture avec Buffer</h3>
+<pre>
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EcritureBuffer {
+    public static void main(String[] args) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("exemple_buffer.txt"))) {
+            writer.write("Utilisation d'un buffer pour écrire dans un fichier.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</pre>
+
+<h2>Chapitre 2 : Gestion des Exceptions</h2>
+<p>
+    <strong>Théorie :</strong>
+    Lors de la manipulation de fichiers, il est crucial de gérer les exceptions pour éviter les erreurs d'exécution.
+    Les exceptions courantes incluent <code>IOException</code> et <code>FileNotFoundException</code>.
+    Utiliser des blocs try-with-resources permet de fermer automatiquement les flux après utilisation.
+</p>
+
+<h3>Exemple 1 : Gestion des exceptions avec try-with-resources</h3>
+<pre>
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LectureAvecExceptions {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("exemple.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Erreur de lecture du fichier : " + e.getMessage());
+        }
+    }
+}
+</pre>
+
+<h3>Exemple 2 : Écriture avec gestion des exceptions</h3>
+<pre>
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EcritureAvecExceptions {
+    public static void main(String[] args) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("exemple_exceptions.txt"))) {
+            writer.write("Gestion des exceptions lors de l'écriture.");
+        } catch (IOException e) {
+            System.err.println("Erreur d'écriture dans le fichier : " + e.getMessage());
+        }
+    }
+}
+</pre>
+
+<h3>Exemple 3 : Lecture et écriture combinées</h3>
+<pre>
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class LectureEcritureCombinee {
+    public static void main(String[] args) {
+        String sourceFile = "exemple.txt";
+        String destinationFile = "copie_exemple.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(destinationFile))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la copie du fichier : " + e.getMessage());
+        }
+    }
+}
+</pre>
+
+</body>
+</html>
