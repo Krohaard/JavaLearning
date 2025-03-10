@@ -42,9 +42,9 @@ public class TP011 {
 			kEnd = kRandom.nextInt(101)+49;
 			for(kk=0;kk<kEnd;kk++) {
 				while((kLetter<65 || kLetter>90) && (kLetter>122 || kLetter<97)) {
-					kLetter = (char) (kRandom.nextInt(122-65)+65);
+					kLetter = (char) (kRandom.nextInt(26*2+6)+'A');
 				}
-				if(Math.ceilMod(kk, kSpace)==0) {
+				if((kk % kSpace)==0 && kk!=0) {
 					kText = kText + ' ';
 					kSpace = kRandom.nextInt(12)+6;
 					kk=kk+1;
@@ -77,7 +77,7 @@ public class TP011 {
 		for(ll=0;ll<kLenght;ll++) {
 			kEnd = kRandom.nextInt(101)+49;
 			for(kk=0;kk<kEnd;kk++) {
-				kLetter = (char) (kRandom.nextInt(91+26+5-65)+65);
+				kLetter = (char) (kRandom.nextInt(26) + 'A');
 				kFile.append(kLetter);
 			}
 			kFile.append("\n");

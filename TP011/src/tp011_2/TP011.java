@@ -26,8 +26,8 @@ public class TP011 {
 		} catch (IOException e) {
 			System.out.println("Erreur de lecture du fichier : " + e.getMessage());
 		}
-		kList = kFile.toString().split(" ");
-		System.out.printf("il y a %d mots dans ce texte.",kList.length);
+		kList = kFile.toString().split("\\s+");
+		System.out.printf("il y a %d mots dans ce texte.\n",kList.length);
 	}
 
 }
