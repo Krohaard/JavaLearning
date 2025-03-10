@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads en Java</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ff6f61;
+        }
+        .chapitre {
+            margin-bottom: 40px;
+        }
+        .exemple, .exercice, .fonctions {
+            background-color: #2c2c2c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Threads en Java</h1>
+    <div class="chapitre">
+        <h2>Introduction aux Threads</h2>
+        <p>Les threads en Java permettent d'exécuter plusieurs tâches en parallèle. Ils sont utilisés pour améliorer les performances des applications en tirant parti des processeurs multi-cœurs.</p>
+        <p>Pour plus d'informations, consultez la <a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html" target="_blank">documentation officielle</a>.</p>
+    </div>
+    <div class="chapitre">
+        <h2>Création d'un Thread</h2>
+        <div class="exemple">
+            <p>Exemple 1 : Création d'un thread en étendant la classe <code>Thread</code>.</p>
+            <pre><code>class MonThread extends Thread {
+    public void run() {
+        System.out.println("Thread en cours d'exécution.");
+    }
+}
+
+public class ExempleThread {
+    public static void main(String[] args) {
+        MonThread thread = new MonThread();
+        thread.start(); // Démarre le thread
+    }
+}</code></pre>
+        </div>
+        <div class="exemple">
+            <p>Exemple 2 : Création d'un thread en implémentant l'interface <code>Runnable</code>.</p>
+            <pre><code>class MonRunnable implements Runnable {
+    public void run() {
+        System.out.println("Runnable en cours d'exécution.");
+    }
+}
+
+public class ExempleRunnable {
+    public static void main(String[] args) {
+        Thread thread = new Thread(new MonRunnable());
+        thread.start(); // Démarre le thread
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Synchronisation des Threads</h2>
+        <div class="exemple">
+            <p>Exemple 3 : Utilisation de <code>synchronized</code> pour éviter les conflits d'accès.</p>
+            <pre><code>class Compteur {
+    private int valeur = 0;
+
+    public synchronized void incrementer() {
+        valeur++;
+    }
+
+    public int getValeur() {
+        return valeur;
+    }
+}
+
+public class ExempleSynchronisation {
+    public static void main(String[] args) throws InterruptedException {
+        Compteur compteur = new Compteur();
+
+        Runnable tache = () -> {
+            for (int i = 0; i < 1000; i++) {
+                compteur.incrementer();
+            }
+        };
+
+        Thread thread1 = new Thread(tache);
+        Thread thread2 = new Thread(tache);
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+
+        System.out.println("Valeur finale : " + compteur.getValeur());
+    }
+}</code></pre>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Fonctions Utiles</h2>
+        <div class="fonctions">
+            <p><strong>Méthodes de Thread :</strong></p>
+            <ul>
+                <li><code>start()</code> : Démarre l'exécution du thread.</li>
+                <li><code>run()</code> : Méthode contenant le code à exécuter par le thread.</li>
+                <li><code>join()</code> : Attend que le thread se termine.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="chapitre">
+        <h2>Exercices</h2>
+        <div class="exercice">
+            <p>Exercice 1 : Crée un programme qui utilise deux threads pour afficher les nombres pairs et impairs de 1 à 100.</p>
+        </div>
+        <div class="exercice">
+            <p>Exercice 2 : Implémente un programme qui utilise des threads pour simuler une course entre plusieurs voitures.</p>
+        </div>
+    </div>
+    <p><strong>ExpertTime :</strong> 1 heure</p>
+    <p><a href="https://chat.mistral.ai/chat/689859c1-8345-4140-a657-67f5119e0a13" target="_blank">Revenir à la conversation</a></p>
+</body>
+</html>
